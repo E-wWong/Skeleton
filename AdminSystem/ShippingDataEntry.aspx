@@ -8,8 +8,72 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <asp:Label ID="lblShippingID" runat="server" style="z-index: 1; left: 9px; top: 13px; position: absolute" Text="Shipping ID" height="19px" width="93px"></asp:Label>
+        <p>
+            <asp:TextBox ID="txtAddressLine1" runat="server" style="z-index: 1; left: 158px; top: 50px; position: absolute; width: 173px" OnTextChanged="txtAddressLine1_TextChanged">Address line 1</asp:TextBox>
+        </p>
+        <p>
+            <asp:TextBox ID="txtShippingID" runat="server" style="z-index: 1; left: 158px; top: 13px; position: absolute; width: 173px; margin-bottom: 22px"></asp:TextBox>
+            <asp:Label ID="lblAddress" runat="server" style="z-index: 1; left: 12px; top: 47px; position: absolute" Text="Address" height="19px" width="93px"></asp:Label>
+        </p>
+        <p>
+            <asp:TextBox ID="txtAddressLine2" runat="server" OnTextChanged="TextBox3_TextChanged" style="z-index: 1; left: 158px; top: 72px; position: absolute; width: 173px; margin-bottom: 21px">Address line 2</asp:TextBox>
+            <asp:TextBox ID="txtTownCity" runat="server" style="z-index: 1; left: 158px; top: 95px; position: absolute; width: 173px; height: 22px;">Town/City</asp:TextBox>
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Label ID="lblOrderID" runat="server" style="z-index: 1; left: 14px; top: 584px; position: absolute" Text="Order ID" height="19px" width="93px"></asp:Label>
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:CheckBox ID="cbIsDispatched" runat="server" style="z-index: 1; left: 158px; top: 633px; position: absolute" Text="Is Dispatched?" />
+        <asp:Label ID="lblDeliveryType" runat="server" style="z-index: 1; left: 13px; top: 188px; position: absolute; width: 93px; bottom: 464px;" Text="Delivery Type" height="19px"></asp:Label>
+        </p>
+        <p>
+            <asp:TextBox ID="txtCounty" runat="server" style="z-index: 1; left: 158px; top: 119px; position: absolute; width: 173px">County</asp:TextBox>
+        </p>
+        <p>
+            <asp:RadioButtonList ID="rblParcelSize" runat="server" style="z-index: 1; left: 158px; top: 277px; position: absolute; height: 27px; width: 82px">
+                <asp:ListItem>Small</asp:ListItem>
+                <asp:ListItem>Medium</asp:ListItem>
+                <asp:ListItem>Large</asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:Label ID="lblParcelSize" runat="server" style="z-index: 1; left: 16px; top: 284px; position: absolute; margin-bottom: 0px" Text="Parcel Size" height="19px" width="93px"></asp:Label>
+        </p>
+        <asp:TextBox ID="txtPostcode" runat="server" style="z-index: 1; left: 158px; top: 142px; position: absolute; width: 173px">Postcode</asp:TextBox>
+        <asp:RadioButtonList ID="rblDeliveryType" runat="server" style="z-index: 1; left: 158px; top: 188px; position: absolute; height: 27px; width: 153px">
+            <asp:ListItem>Tracked</asp:ListItem>
+            <asp:ListItem>First Class</asp:ListItem>
+            <asp:ListItem>Second Class</asp:ListItem>
+        </asp:RadioButtonList>
+        <p>
+            <asp:TextBox ID="txtOrderID" runat="server" OnTextChanged="TextBox7_TextChanged" style="z-index: 1; left: 157px; top: 583px; position: absolute" width="173px"></asp:TextBox>
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Label ID="lblDeliveryDate" runat="server" style="z-index: 1; left: 13px; top: 380px; position: absolute" Text="Delivery Date" width="93px"></asp:Label>
+            <asp:Calendar ID="cDeliveryDate" runat="server" style="z-index: 1; left: 158px; top: 375px; position: absolute; height: 188px; width: 259px"></asp:Calendar>
+        </p>
+        <p>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 18px; top: 684px; position: absolute; right: 583px"></asp:Label>
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 109px; top: 734px; position: absolute" Text="Cancel" />
+        </p>
+        <p>
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 42px; top: 734px; position: absolute" Text="OK" />
+        </p>
     </form>
 </body>
 </html>
