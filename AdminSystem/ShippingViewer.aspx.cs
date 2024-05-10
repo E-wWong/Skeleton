@@ -15,6 +15,18 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         Ashipment = (clsShipping)Session["AShipment"];
         //display the daa for this entry
-        Response.Write(Ashipment.address);
+        Response.Write(Ashipment.shippingID + " ");
+        
+        Response.Write(Ashipment.address + " ");
+        Console.WriteLine();
+        Response.Write(Ashipment.deliveryType + " ");
+        Console.WriteLine();
+        Response.Write(Ashipment.parcelSize + " ");
+        Console.WriteLine();
+        Response.Write(Ashipment.deliveryDate + " ");
+        Console.WriteLine();
+        Response.Write(Ashipment.orderID + " ");
+        Console.WriteLine();
+        Response.Write(Ashipment.isDispatched + " ");
     }
 }
