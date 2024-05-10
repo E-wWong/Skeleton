@@ -7,6 +7,8 @@ namespace Testing5
     [TestClass]
     public class tstShipping
     {
+        //****** CHECK INSTANCE OF CLASS ***************************************************************************************************************
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -15,6 +17,8 @@ namespace Testing5
             //Test to see that it exists
             Assert.IsNotNull(AShipment);
         }
+
+        //****** TESTING IF THE PROPERTY IS OK *********************************************************************************************************
 
         [TestMethod]
         public void ShippingIdPropertyOK()
@@ -106,6 +110,8 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AShipment.isDispatched, TestData);
         }
+
+        //****** TESTING FIND METHOD IS OK *************************************************************************************************************
         
         [TestMethod]
         public void FindMethodOK()
@@ -121,6 +127,8 @@ namespace Testing5
             //test to see if the result is true
             Assert.IsTrue(found);
         }
+
+        //****** TESTING EACH PROPERTY CAN BE FOUND ****************************************************************************************************
 
         [TestMethod]
         public void TestShippingIDFound()
@@ -156,7 +164,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.address != "416 Highfield Road-Leicester-LE54 0JI")
+            if (AShipment.address != "77 New Street-Ilford-IG87 0FS")
             {
                 OK = false;
             }
@@ -177,7 +185,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.deliveryType != "First")
+            if (AShipment.deliveryType != "Second")
             {
                 OK = false;
             }
@@ -198,7 +206,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.parcelSize != "Small")
+            if (AShipment.parcelSize != "Medium")
             {
                 OK = false;
             }
@@ -219,7 +227,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.deliveryDate != Convert.ToDateTime("15/05/2024"))
+            if (AShipment.deliveryDate != Convert.ToDateTime("20/05/2024"))
             {
                 OK = false;
             }
@@ -240,7 +248,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.orderID != 7)
+            if (AShipment.orderID != 8)
             {
                 OK = false;
             }
@@ -261,7 +269,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.isDispatched != true)
+            if (AShipment.isDispatched != false)
             {
                 OK = false;
             }
