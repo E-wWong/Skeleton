@@ -106,5 +106,167 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AShipment.isDispatched, TestData);
         }
+        
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of a class we want to create
+            clsShipping AShipment = new clsShipping();
+            //create a boolean variable to store the results of the validation
+            Boolean found = false;
+            //create some test data to use with the method
+            Int32 ShippingID = 4;
+            //invoke the method
+            found = AShipment.Find(ShippingID);
+            //test to see if the result is true
+            Assert.IsTrue(found);
+        }
+
+        [TestMethod]
+        public void TestShippingIDFound()
+        {
+            //create an instance of the class we want to create
+            clsShipping AShipment = new clsShipping();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ShippingID = 4;
+            //invoke the method
+            found = AShipment.Find(ShippingID);
+            if (AShipment.shippingID != 4)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAddressFound()
+        {
+            //create an instance of the class we want to create
+            clsShipping AShipment = new clsShipping();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ShippingID = 4;
+            //invoke the method
+            found = AShipment.Find(ShippingID);
+            if (AShipment.address != "416 Highfield Road-Leicester-LE54 0JI")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDeliveryTypeFound()
+        {
+            //create an instance of the class we want to create
+            clsShipping AShipment = new clsShipping();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ShippingID = 4;
+            //invoke the method
+            found = AShipment.Find(ShippingID);
+            if (AShipment.deliveryType != "First")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestParcelSizeFound()
+        {
+            //create an instance of the class we want to create
+            clsShipping AShipment = new clsShipping();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ShippingID = 4;
+            //invoke the method
+            found = AShipment.Find(ShippingID);
+            if (AShipment.parcelSize != "Small")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestdeliveryDateFound()
+        {
+            //create an instance of the class we want to create
+            clsShipping AShipment = new clsShipping();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ShippingID = 4;
+            //invoke the method
+            found = AShipment.Find(ShippingID);
+            if (AShipment.deliveryDate != Convert.ToDateTime("15/05/2024"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderIDFound()
+        {
+            //create an instance of the class we want to create
+            clsShipping AShipment = new clsShipping();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ShippingID = 4;
+            //invoke the method
+            found = AShipment.Find(ShippingID);
+            if (AShipment.orderID != 7)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestIsDispatchedFound()
+        {
+            //create an instance of the class we want to create
+            clsShipping AShipment = new clsShipping();
+            //create a boolean variable to store the result of the search
+            Boolean found = false;
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ShippingID = 4;
+            //invoke the method
+            found = AShipment.Find(ShippingID);
+            if (AShipment.isDispatched != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }
