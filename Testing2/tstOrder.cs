@@ -89,6 +89,7 @@ namespace Testing2
             //test to see that the values are the same
             Assert.AreEqual(AnOrder.isAGift, TestData);
         }
+        [TestMethod]
         public void itemCodes()
         {
             //create an instance of the class we want to create
