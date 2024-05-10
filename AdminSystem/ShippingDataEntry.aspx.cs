@@ -51,7 +51,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AShipment.address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
         AShipment.deliveryType = rblDeliveryType.Text;
         AShipment.parcelSize = rblParcelSize.Text;
-        AShipment.deliveryDate = Convert.ToDateTime(cDeliveryDate.TodaysDate);
+        AShipment.deliveryDate = Convert.ToDateTime(cDeliveryDate.SelectedDate);
         AShipment.orderID = Convert.ToInt32(txtOrderID.Text);
         AShipment.isDispatched = cbIsDispatched.Checked;
         //Store the data in the session object
