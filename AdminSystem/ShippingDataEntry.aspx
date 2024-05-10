@@ -11,6 +11,7 @@
         <asp:Label ID="lblShippingID" runat="server" style="z-index: 1; left: 9px; top: 13px; position: absolute" Text="Shipping ID" height="19px" width="93px"></asp:Label>
         <p>
             <asp:TextBox ID="txtAddressLine1" runat="server" style="z-index: 1; left: 158px; top: 50px; position: absolute; width: 173px" OnTextChanged="txtAddressLine1_TextChanged">Address line 1</asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click1" style="z-index: 1; left: 506px; top: 11px; position: absolute" Text="Find" />
         </p>
         <p>
             <asp:TextBox ID="txtShippingID" runat="server" style="z-index: 1; left: 158px; top: 13px; position: absolute; width: 173px; margin-bottom: 22px"></asp:TextBox>
@@ -28,7 +29,7 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:CheckBox ID="cbIsDispatched" runat="server" style="z-index: 1; left: 158px; top: 633px; position: absolute" Text="Is Dispatched?" />
+            <asp:CheckBox ID="chkIsDispatched" runat="server" style="z-index: 1; left: 158px; top: 633px; position: absolute" Text="Is Dispatched?" />
         <asp:Label ID="lblDeliveryType" runat="server" style="z-index: 1; left: 13px; top: 188px; position: absolute; width: 93px; bottom: 464px;" Text="Delivery Type" height="19px"></asp:Label>
         </p>
         <p>

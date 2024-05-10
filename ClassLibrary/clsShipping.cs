@@ -14,6 +14,8 @@ namespace ClassLibrary
         private Int32 mOrderID;
         private Boolean mIsDispatched;
 
+        //****** GET/SET METHODS ***********************************************************************************************************************
+
         public int shippingID 
         { 
             get
@@ -112,18 +114,35 @@ namespace ClassLibrary
             }
         }
 
+        //****** FIND METHOD ***************************************************************************************************************************
+
         public bool Find(int shippingID)
         {
-            //set the private data members to the test data value
-            mShippingID = 4;
-            mAddress = "416 Highfield Road-Leicester-LE54 0JI";
-            mDeliveryType = "First";
-            mParcelSize = "Small";
-            mDeliveryDate = Convert.ToDateTime("15/05/2024");
-            mOrderID = 7;
-            mIsDispatched = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the Shipping ID to search for
+            DB.AddParameter("@ShippingID", shippingID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblShipping_FilterByShippingID");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mShippingID = Convert.ToInt32(DB.DataTable.Rows[0]["shippingID"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["address"]);
+                mDeliveryType = Convert.ToString(DB.DataTable.Rows[0]["deliveryType"]);
+                mParcelSize = Convert.ToString(DB.DataTable.Rows[0]["parcelSize"]);
+                mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["deliveryDate"]);
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
+                mIsDispatched = Convert.ToBoolean(DB.DataTable.Rows[0]["isDispatched"]);
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
     }
 }
