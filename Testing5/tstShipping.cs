@@ -164,7 +164,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.address != "77 New Street-Ilford-IG87 0FS")
+            if (AShipment.address != "77 New Street-Ilford-London-IG87 0FS")
             {
                 OK = false;
             }
@@ -185,7 +185,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.deliveryType != "Second")
+            if (AShipment.deliveryType != "Second Class")
             {
                 OK = false;
             }

@@ -116,7 +116,7 @@ namespace Testing4
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffID = 2717647;
+            Int32 StaffID = 4;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //test to see if the result is true
@@ -134,11 +134,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK(assume it is)
             Boolean OK=true;
             //create some test data to use with the method
-            Int32 StaffID = 2717647;
+            Int32 StaffID = 4;
             //invoke the method
             Found=AStaff.Find(StaffID);
             //check the StaffID 
-            if (AStaff.StaffID != 2717647)
+            if (AStaff.StaffID != 4)
             {
                 OK = false;
             }
@@ -157,7 +157,7 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2717647;
+            Int32 StaffID = 4;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the StaffID 
@@ -180,7 +180,7 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2717647;
+            Int32 StaffID = 4;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the StaffID 
@@ -203,11 +203,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2717647;
+            Int32 StaffID = 4;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the StaffID 
-            if (AStaff.role != "Customer Manager")
+            if (AStaff.role != "Customer Management")
             {
                 OK = false;
             }
@@ -226,7 +226,7 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2717647;
+            Int32 StaffID = 4;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the StaffID 
@@ -249,7 +249,7 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2717647;
+            Int32 StaffID = 4;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the StaffID 
@@ -272,11 +272,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2717647;
+            Int32 StaffID = 4;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the StaffID 
-            if (AStaff.DateofBirth != Convert.ToDateTime("16/06/2004"))
+            if (AStaff.DateofBirth != Convert.ToDateTime("10/04/2004"))
             {
                 OK = false;
             }
