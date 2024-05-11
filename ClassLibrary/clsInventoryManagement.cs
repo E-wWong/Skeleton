@@ -111,18 +111,33 @@ namespace ClassLibrary
 
 
 
-        public bool Find(int itemID)
+        public bool Find(int itemId)
         {
-            //set the private data memebers to the test data value
-            mitemID = 21;
-            mquantity = 100;
-            mitemName = "Sea Art Print";
-            msize = "Large";
-            mitemPrice = 20.99;
-            mlastStockDelivery = Convert.ToDateTime("10 / 05 / 2024");
-            mavailability = true;
-            //always return true
-            return true;
+
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the paramemter for the item id to search for 
+            DB.AddParameter("@itemId", itemId);
+            //add execute the stored procedure
+            DB.Execute("sproc_tblInventoryManagement_itemID");
+            //if one record is found (there should be either one or zero)
+;           if (DB.Count == 1)
+            {
+                mitemID = Convert.ToInt32(DB.DataTable.Rows[0]["itemId"]);
+                mitemName = Convert.ToString(DB.DataTable.Rows[0]["itemName"]);
+                mitemPrice = Convert.ToDouble(DB.DataTable.Rows[0]["itemPrice"]);
+                mquantity = Convert.ToInt32(DB.DataTable.Rows[0]["quantity"]);
+                msize = Convert.ToString(DB.DataTable.Rows[0]["size"]);
+                mlastStockDelivery = Convert.ToDateTime(DB.DataTable.Rows[0]["lastStockDelivery"]);
+                mavailability = Convert.ToBoolean(DB.DataTable.Rows[0]["availability"]);
+                //always return true
+                return true;
+            }
+          else
+            {
+                //return false indidcating there is a problem
+                return false;
+            }
         }
 
     }
