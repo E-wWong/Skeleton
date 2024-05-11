@@ -21,7 +21,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsInventoryManagement AnInventory = new clsInventoryManagement();
             //create some test data to assing to the property
-            int testData = 123;
+            int testData = 10;
             //assign the data to the property
             AnInventory.itemID = testData;
             //test to see that the 2 values are the same
@@ -34,7 +34,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsInventoryManagement AnInventory = new clsInventoryManagement();
             //create some test data to assing to the property
-            String testData = "Sea Art Print";
+            String testData = "pokemon";
             //assign the data to the property
             AnInventory.itemName = testData;
             //test to see that the 2 values are the same
@@ -47,7 +47,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsInventoryManagement AnInventory = new clsInventoryManagement();
             //create some test data to assing to the property
-            Double testData = 20.99;
+            Double testData = 20.0000;
             //assign the data to the property
             AnInventory.itemPrice = testData;
             //test to see that the 2 values are the same
@@ -60,7 +60,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsInventoryManagement AnInventory = new clsInventoryManagement();
             //create some test data to assing to the property
-            int testData = 50;
+            int testData = 20;
             //assign the data to the property
             AnInventory.quantity = testData;
             //test to see that the 2 values are the same
@@ -73,7 +73,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsInventoryManagement AnInventory = new clsInventoryManagement();
             //create some test data to assing to the property
-            String testData = "Large";
+            String testData = "Medium";
             //assign the data to the property
             AnInventory.size = testData;
             //test to see that the 2 values are the same
@@ -119,11 +119,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 21;
+            Int32 itemID = 10;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.itemID != 21)
+            if (AnInventory.itemID != 10)
             {
                 OK = false;
             }
@@ -142,11 +142,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 21;
+            Int32 itemID = 10;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.itemName != "Sea Art Print")
+            if (AnInventory.itemName != "pokemon")
             {
                 OK = false;
             }
@@ -165,11 +165,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 21;
+            Int32 itemID = 10;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.itemPrice != 20.99)
+            if (AnInventory.itemPrice != 20.0000)
             {
                 OK = false;
             }
@@ -188,11 +188,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 21;
+            Int32 itemID = 10;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.quantity != 100)
+            if (AnInventory.quantity != 20)
             {
                 OK = false;
             }
@@ -211,11 +211,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 21;
+            Int32 itemID = 10;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.size != "Large" )
+            if (AnInventory.size != "Medium" )
             {
                 OK = false;
             }
@@ -234,11 +234,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 21;
+            Int32 itemID = 10;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.lastStockDelivery != Convert.ToDateTime("10 / 05 / 2024"));
+            if (AnInventory.lastStockDelivery != Convert.ToDateTime("10/01/2023")) 
             {
                 OK = false;
             }
@@ -257,7 +257,7 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 21;
+            Int32 itemID = 10;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID

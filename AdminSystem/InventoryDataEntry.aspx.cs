@@ -47,4 +47,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address class
+        clsInventoryManagement AnInventory = new clsInventoryManagement();
+        //create a variable to store primarykey
+        Int32 itemId;
+        //create a variable to store the result of the find operation
+        Boolean found = false;
+        //get the primary key entered by the user
+        itemId = Convert.ToInt32(txtitemID.Text);
+        //find the record
+        found = AnInventory.Find(itemId);
+        //if found
+        if (found == true)
+        {
+            //display the values of the properties in the form
+            txtitemName.Text = AnInventory.itemName;
+            txtitemPrice.Text = AnInventory.itemPrice.ToString();
+            txtquantity.Text = AnInventory.quantity.ToString();
+            txtsize.Text = AnInventory.size;
+            clndrStockDelivery.SelectedDate = AnInventory.lastStockDelivery;
+            ChkActive.Checked = AnInventory.availability;
+
+        }
+    }
 }
