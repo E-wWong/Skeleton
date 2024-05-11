@@ -34,7 +34,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsInventoryManagement AnInventory = new clsInventoryManagement();
             //create some test data to assing to the property
-            String testData = "pokemon art print";
+            String testData = "Sea Art Print";
             //assign the data to the property
             AnInventory.itemName = testData;
             //test to see that the 2 values are the same
@@ -107,5 +107,171 @@ namespace Testing3
         }
 
 
+
+        [TestMethod]
+
+        public void TestitemIDFound()
+        {
+            //create an instance of the class we want to create
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //create a Boolean variable to store the result of each search
+            Boolean Found = false;
+            // create a Boolean variable to record is OK (assume it is)
+            Boolean OK = true;
+            //create some tests data to use with the method 
+            Int32 itemID = 21;
+            //invoke the method 
+            Found = AnInventory.Find(itemID);
+            // check the item ID
+            if (AnInventory.itemID != 21)
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestitemNameFound()
+        {
+            //create an instance of the class we want to create
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //create a Boolean variable to store the result of each search
+            Boolean Found = false;
+            // create a Boolean variable to record is OK (assume it is)
+            Boolean OK = true;
+            //create some tests data to use with the method 
+            Int32 itemID = 21;
+            //invoke the method 
+            Found = AnInventory.Find(itemID);
+            // check the item ID
+            if (AnInventory.itemName != "Sea Art Print")
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestitemPriceFound()
+        {
+            //create an instance of the class we want to create
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //create a Boolean variable to store the result of each search
+            Boolean Found = false;
+            // create a Boolean variable to record is OK (assume it is)
+            Boolean OK = true;
+            //create some tests data to use with the method 
+            Int32 itemID = 21;
+            //invoke the method 
+            Found = AnInventory.Find(itemID);
+            // check the item ID
+            if (AnInventory.itemPrice != 20.99)
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestquantityFound()
+        {
+            //create an instance of the class we want to create
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //create a Boolean variable to store the result of each search
+            Boolean Found = false;
+            // create a Boolean variable to record is OK (assume it is)
+            Boolean OK = true;
+            //create some tests data to use with the method 
+            Int32 itemID = 21;
+            //invoke the method 
+            Found = AnInventory.Find(itemID);
+            // check the item ID
+            if (AnInventory.quantity != 100)
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestsizeFound()
+        {
+            //create an instance of the class we want to create
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //create a Boolean variable to store the result of each search
+            Boolean Found = false;
+            // create a Boolean variable to record is OK (assume it is)
+            Boolean OK = true;
+            //create some tests data to use with the method 
+            Int32 itemID = 21;
+            //invoke the method 
+            Found = AnInventory.Find(itemID);
+            // check the item ID
+            if (AnInventory.size != "Large" )
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestlastStockDeliveryFound()
+        {
+            //create an instance of the class we want to create
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //create a Boolean variable to store the result of each search
+            Boolean Found = false;
+            // create a Boolean variable to record is OK (assume it is)
+            Boolean OK = true;
+            //create some tests data to use with the method 
+            Int32 itemID = 21;
+            //invoke the method 
+            Found = AnInventory.Find(itemID);
+            // check the item ID
+            if (AnInventory.lastStockDelivery != Convert.ToDateTime("10 / 05 / 2024"));
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestavailabilityFound()
+        {
+            //create an instance of the class we want to create
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //create a Boolean variable to store the result of each search
+            Boolean Found = false;
+            // create a Boolean variable to record is OK (assume it is)
+            Boolean OK = true;
+            //create some tests data to use with the method 
+            Int32 itemID = 21;
+            //invoke the method 
+            Found = AnInventory.Find(itemID);
+            // check the item ID
+            if (AnInventory.availability != true)
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
     }
+
+
+    
 }
