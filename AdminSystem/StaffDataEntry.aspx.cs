@@ -43,4 +43,42 @@ public partial class _1_DataEntry : System.Web.UI.Page
      
         
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+       
+
+    }
+    
+    protected void txtStaffID_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnFind_Click1(object sender, EventArgs e)
+    {
+        //create an instance of the Staff class
+        clsStaff AStaff = new clsStaff();
+        //create a new variable to store the primary key 
+        Int32 staffID;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        staffID = Convert.ToInt32(txtStaffID.Text);
+        //find the record
+        Found = AStaff.Find(staffID);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtName.Text = AStaff.name;
+            txtEmail.Text = AStaff.email;
+            txtRole.Text = AStaff.role;
+            txtPassword.Text = AStaff.password;
+            Calendar1.SelectedDate = AStaff.DateofBirth;
+            chkPermanentEmployee.Checked = AStaff.PermanentEmployee;
+
+
+        }
+    }
 }

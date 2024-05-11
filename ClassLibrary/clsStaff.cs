@@ -13,7 +13,7 @@ namespace ClassLibrary
         private String mPassword;
         private Boolean mPermanentEmployee;
         private DateTime mDateofBirth;
-       
+
         //StaffID public property
         public Int32 StaffID
         {
@@ -28,9 +28,9 @@ namespace ClassLibrary
                 mStaffID = value;
             }
         }
-        
+
         //Name public property
-         public string name
+        public string name
         {
             get
             {
@@ -72,7 +72,7 @@ namespace ClassLibrary
             }
         }
         //Password public property
-         public string password
+        public string password
         {
             get
             {
@@ -116,22 +116,35 @@ namespace ClassLibrary
 
         public bool Find(int staffID)
         {
-            //set the private data members to the test data value
-            mStaffID = 2717647;
-            mName = "Harvey";
-            mEmail = "harvey@my365.dmu.ac.uk";
-            mRole = "Customer Manager";
-            mPassword = "harvey_123";
-            mDateofBirth = Convert.ToDateTime ("16/06/2004");
-            mPermanentEmployee = true;
-            //always return true
-            
-            return true;
+
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for
+            DB.AddParameter("@staffID", staffID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaffManagement_FilterByStaffID");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+
+                //copy the data from the database to the private data members
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["staffID"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]); ;
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]); 
+                mRole = Convert.ToString(DB.DataTable.Rows[0]["Role"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mDateofBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
+                mPermanentEmployee = Convert.ToBoolean(DB.DataTable.Rows[0]["permanentEmployee"]);
+                //always return true
+
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
-
-            
-
-           
-
     }
 }
