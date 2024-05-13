@@ -132,7 +132,7 @@ namespace Testing1
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 customerID = 12;
+            Int32 customerID = 3;
             //invoke the method
             Found = ACustomer.Find(customerID);
             //test to see if the result is true
@@ -151,11 +151,11 @@ namespace Testing1
             //create a Boolean value to record if the data is ok (assume that it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 12;
+            Int32 customerID = 3;
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.customerID != 12)
+            if (ACustomer.customerID != 3)
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -171,11 +171,11 @@ namespace Testing1
             //create a Boolean value to record if the data is ok (assume that it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 12;
+            Int32 customerID = 3;
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.name != "testName")
+            if (ACustomer.name != "bob brown")
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -191,11 +191,11 @@ namespace Testing1
             //create a Boolean value to record if the data is ok (assume that it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 12;
+            Int32 customerID = 3;
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.email != "testEmail")
+            if (ACustomer.email != "email@email.org")
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -211,11 +211,11 @@ namespace Testing1
             //create a Boolean value to record if the data is ok (assume that it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 12;
+            Int32 customerID = 3;
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.mobileNum != 0123456789)
+            if (ACustomer.mobileNum != 7654321)
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -231,11 +231,11 @@ namespace Testing1
             //create a Boolean value to record if the data is ok (assume that it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 12;
+            Int32 customerID = 3;
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.password != "testPassword")
+            if (ACustomer.password != "password")
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -251,11 +251,11 @@ namespace Testing1
             //create a Boolean value to record if the data is ok (assume that it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 12;
+            Int32 customerID = 3;
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.accountCreationDate != Convert.ToDateTime("25/12/2024"))
+            if (ACustomer.accountCreationDate != Convert.ToDateTime("12/12/2012"))
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -271,11 +271,11 @@ namespace Testing1
             //create a Boolean value to record if the data is ok (assume that it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 12;
+            Int32 customerID = 3;
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.returningCustomer != true)
+            if (ACustomer.returningCustomer != false)
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);

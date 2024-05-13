@@ -6,16 +6,32 @@ namespace ClassLibrary
     {
         public bool Find(int customerID)
         {
-            mCustomerID = 12;
-            mName = "testName";
-            mEmail = "testEmail";
-            mMobileNum = 0123456789;
-            mPassword = "testPassword";
-            mAccountCreationDate = Convert.ToDateTime("25/12/2024");
-            mReturningCustomer = true;
-
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the customerID to search for
+            DB.AddParameter("@CustomerID", customerID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
+            //if 1 record is found (there should be 1 or 0)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["name"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["email"]);
+                mMobileNum = Convert.ToInt64(DB.DataTable.Rows[0]["mobileNum"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["password"]);
+                mAccountCreationDate = Convert.ToDateTime(DB.DataTable.Rows[0]["accountCreationDate"]);
+                mReturningCustomer = Convert.ToBoolean(DB.DataTable.Rows[0]["returningCustomer"]);
+                //return everything that worked ok
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there was a problem
+                return false;
+            }
         }
 
         //private data member for the customerID property
