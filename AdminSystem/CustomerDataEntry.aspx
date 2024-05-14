@@ -13,6 +13,7 @@
 </head>
 <body style="height: 549px">
     <form id="form1" runat="server">
+        <asp:Button ID="btnFind" runat="server" height="26px" OnClick="btnFind_Click" style="z-index: 1; left: 368px; top: 34px; position: absolute" Text="Find" width="60px" />
         <asp:Label ID="lblCustomerID" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute" Text="Customer ID" height="19px" width="130px"></asp:Label>
         <p>
             <asp:Label ID="lblName" runat="server" style="z-index: 1; left: 10px; top: 74px; position: absolute" Text="Name" height="19px" width="130px"></asp:Label>
