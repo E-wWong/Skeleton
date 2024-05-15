@@ -19,7 +19,7 @@ namespace ClassLibrary
                 mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
                 mName = Convert.ToString(DB.DataTable.Rows[0]["name"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["email"]);
-                mMobileNum = Convert.ToInt64(DB.DataTable.Rows[0]["mobileNum"]);
+                mMobileNum = Convert.ToString(DB.DataTable.Rows[0]["mobileNum"]);
                 mPassword = Convert.ToString(DB.DataTable.Rows[0]["password"]);
                 mAccountCreationDate = Convert.ToDateTime(DB.DataTable.Rows[0]["accountCreationDate"]);
                 mReturningCustomer = Convert.ToBoolean(DB.DataTable.Rows[0]["returningCustomer"]);
@@ -32,6 +32,11 @@ namespace ClassLibrary
                 //return false indicating there was a problem
                 return false;
             }
+        }
+
+        public string Valid(string customerID, string name, string email, string mobileNum, string password, string accountCreationDate, string returningCustomer)
+        {
+            return "";
         }
 
         //private data member for the customerID property
@@ -89,10 +94,10 @@ namespace ClassLibrary
         }
 
         //private data member for the mobileNum property
-        private Int64 mMobileNum;
+        private string mMobileNum;
 
         //mobileNum public property
-        public Int64 mobileNum
+        public string mobileNum
         {
             get
             {
