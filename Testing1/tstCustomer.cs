@@ -7,6 +7,17 @@ namespace Testing1
     [TestClass]
     public class tstCustomer
     {
+
+        //good test data
+        //create some test data to pass the method
+        string customerID = "4";
+        string name = "testName";
+        string email = "testEmail";
+        string mobileNum = "testMobileNum";
+        string password = "testPassword";
+        string accountCreationDate = DateTime.Now.ToShortDateString();
+        string returningCustomer = "1";
+
         [TestMethod]
         public void instanceOK()
         {
@@ -63,7 +74,7 @@ namespace Testing1
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
             //create some test data to assing to the property
-            long testData = 07123456789;
+            string testData = "07123456789";
             //assign the data to the property
             ACustomer.mobileNum = testData;
             //test to see that the 2 values are the same
@@ -76,7 +87,7 @@ namespace Testing1
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
             //create some test data to assing to the property
-            long testData = 0;
+            string testData = "0";
             //assign the data to the property
             ACustomer.mobileNum = testData;
             //test to see that the 2 values are the same
@@ -215,7 +226,7 @@ namespace Testing1
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.mobileNum != 7654321)
+            if (ACustomer.mobileNum != "02345678901")
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -255,7 +266,7 @@ namespace Testing1
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.accountCreationDate != Convert.ToDateTime("12/12/2012"))
+            if (ACustomer.accountCreationDate != Convert.ToDateTime("23/05/2023"))
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -279,6 +290,21 @@ namespace Testing1
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        //************************************************************************************************************
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any erorr message
+            string Error = "";
+            //invoke the method
+            Error = ACustomer.Valid(customerID, name, email, mobileNum, password, accountCreationDate, returningCustomer);
+            //test to see that the results is correct
+            Assert.AreEqual(Error, "");
         }
     }
 }

@@ -26,7 +26,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         ACustomer.customerID = Convert.ToInt32(txtCustomerID.Text);
         ACustomer.name = txtName.Text;
         ACustomer.email = txtEmail.Text;
-        ACustomer.mobileNum = Convert.ToInt64(txtMobileNum.Text);
+        ACustomer.mobileNum = Convert.ToString(txtMobileNum.Text);
         ACustomer.password = txtPassword.Text;
         ACustomer.accountCreationDate = Convert.ToDateTime(clndrAccountCreationDate.SelectedDate);
         ACustomer.returningCustomer = chkReturningCustomer.Checked;
