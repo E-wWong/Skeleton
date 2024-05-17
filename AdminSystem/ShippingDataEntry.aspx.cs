@@ -45,18 +45,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsShipping
         clsShipping AShipment = new clsShipping();
-        //capture some data
-        AShipment.shippingID = Convert.ToInt32(txtShippingID.Text); 
-        AShipment.address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
-        AShipment.deliveryType = rblDeliveryType.Text;
-        AShipment.parcelSize = rblParcelSize.Text;
-        AShipment.deliveryDate = Convert.ToDateTime(cDeliveryDate.SelectedDate);
-        AShipment.orderID = Convert.ToInt32(txtOrderID.Text);
-        AShipment.isDispatched = chkIsDispatched.Checked;
-        //Store the data in the session object
-        Session["AShipment"] = AShipment;
-        //navigate to the view page
-        Response.Redirect("ShippingViewer.aspx");
+        //capture the data
+        string shippingID = txtShippingID.Text;
+        string address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
+        string deliveryType = rblDeliveryType.Text;
+        string parcelSize = rblParcelSize.Text;
+        string deliveryDate = cDeliveryDate.SelectedDate.ToString();
+        string orderID = txtOrderID.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+        if (Error == "")
+        {
+            //capture some data
+            AShipment.shippingID = Convert.ToInt32(txtShippingID.Text);
+            AShipment.address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
+            AShipment.deliveryType = rblDeliveryType.Text;
+            AShipment.parcelSize = rblParcelSize.Text;
+            AShipment.deliveryDate = Convert.ToDateTime(cDeliveryDate.SelectedDate);
+            AShipment.orderID = Convert.ToInt32(txtOrderID.Text);
+            AShipment.isDispatched = chkIsDispatched.Checked;
+            //Store the data in the session object
+            Session["AShipment"] = AShipment;
+            //navigate to the view page
+            Response.Redirect("ShippingViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void txtAddressLine1_TextChanged(object sender, EventArgs e)
