@@ -138,7 +138,92 @@ namespace ClassLibrary
                 //return false indidcating there is a problem
                 return false;
             }
+
         }
 
+        public string Valid(string itemID, string itemName, string itemPrice, string quantity, string size, string lastStockDelivery, string availability)
+        {
+            //create a string variable to store the error
+            String Error = "";
+
+            //if the ItemPrice is blank
+            if (Int32.Parse(itemID) < 1)
+            {
+                //record error
+                Error = Error + "the quantity cannot be less than 1: ";
+            }
+            if (Int32.Parse(itemID) > 100)
+
+            {
+                //record the error
+                Error = Error + "The quantity cannot be more than 100";
+            }
+
+            //if the ItemName is blank
+            if (itemName.Length < 1)
+            {
+                //record error
+                Error = Error + "the Item Name may not be blank : ";
+            }
+            if (itemName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Item Name must be greater than 50";
+            }
+
+            //if the ItemPrice is blank
+            if (Double.Parse(itemPrice) < 1)
+            {
+                //record error
+                Error = Error + "the Item Price may not be blank : ";
+            }
+            if (Double.Parse(itemPrice) > 9999.99)
+            {
+                //record the error
+                Error = Error + "The Item Price must be less than 6 characters";
+            }
+
+            //if the quantity is blank
+            if (Int32.Parse(quantity) < 1)
+            {
+                //record error
+                Error = Error + "the quantity cannot be less than 1: ";
+            }
+            if (Int32.Parse(quantity) > 100000000)
+
+            {
+                //record the error
+                Error = Error + "The quantity cannot be more than 100,000,000";
+            }
+
+            if (size == "")
+            {
+                Error = Error + "An option for delivery type must be selected";
+
+            }
+
+
+            //create a temporary value to store the date values
+            DateTime DateTemp;
+            //if the ItemPrice is blank
+            
+            //copy the dateAdded value tot he DateTemp variable
+            DateTemp = Convert.ToDateTime(lastStockDelivery);
+
+            if (DateTemp < Convert.ToDateTime("01/01/2024"))
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past";
+            }
+            //check to see if the date is less than today's date
+            if (DateTemp > DateTime.Now.Date) 
+            {
+                Error = Error + "The date cannot be in the future";
+            }
+
+            //return any error messages
+            return Error;
+
+        }
     }
 }

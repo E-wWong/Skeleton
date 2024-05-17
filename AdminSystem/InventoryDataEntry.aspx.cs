@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,8 +22,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void BtnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsInventoryManagement
+        //create a new instace of clsInventoryManagement
         clsInventoryManagement AnInventory = new clsInventoryManagement();
+        //capture the itemID    
+        string itemID = txtitemID.Text;
+        //capture the itemName
+        string itemName = txtitemName.Text;
+        //capture the itemPrice
+        string itemPrice = txtitemPrice.Text;
+        //capture the quantity
+        string quantity = txtquantity.Text;
+        //capture size
+        string size = txtsize.Text;
+        //capture lastStockDelivery
+        string lastStockDelivery = clndrStockDelivery.SelectWeekText;
+        //capture availability
+        string availability = ChkActive.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate data 
+        Error = AnInventory.Valid(itemID, itemName, itemPrice, quantity, size, lastStockDelivery, availability);
+        if(Error == "")
+
+    {
         //capture ItemId
         AnInventory.itemID = Convert.ToInt32(txtitemID.Text);
         //capture itemName
@@ -31,7 +54,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // capture quantity
         AnInventory.quantity = Convert.ToInt32(txtitemID.Text);
         // capture size
-        AnInventory.size = txtitemName.Text;
+        AnInventory.size = txtsize.Text;
         //capture lastStockDelivery
         AnInventory.lastStockDelivery = Convert.ToDateTime(clndrStockDelivery.SelectedDate);
         //availability
@@ -40,8 +63,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AnInventory"] = AnInventory;
         //navigate to the view page
         Response.Redirect("InventoryViewer.aspx");
+    }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
 
     }
+
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
@@ -67,10 +97,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtitemName.Text = AnInventory.itemName;
             txtitemPrice.Text = AnInventory.itemPrice.ToString();
             txtquantity.Text = AnInventory.quantity.ToString();
-            txtsize.Text = AnInventory.size;
+            if (AnInventory.size == "Small")
+            {
+                txtsize.SelectedIndex = -1;
+                txtsize.Items[0].Selected = true;
+            }
+            else if (AnInventory.size == "Medium")
+            {
+                txtsize.SelectedIndex = -1;
+                txtsize.Items[1].Selected = true;
+            }
+            else if (AnInventory.size == "Large")
+            {
+                txtsize.SelectedIndex = -1;
+                txtsize.Items[2].Selected = true;
+            }
             clndrStockDelivery.SelectedDate = AnInventory.lastStockDelivery;
             ChkActive.Checked = AnInventory.availability;
 
         }
+
+
     }
 }
