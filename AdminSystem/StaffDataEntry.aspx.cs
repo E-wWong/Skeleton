@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,25 +19,51 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
         //capture the StaffID
-        AStaff.StaffID = Convert.ToInt32(txtStaffID.Text); //Gives error with letters.
+        String StaffID = txtStaffID.Text;
         //capture the Name
-        AStaff.name = txtName.Text;
+        String name = txtName.Text;
         //capture the Email
-        AStaff.email = txtEmail.Text;
+        String email = txtEmail.Text;
         //capture the Role
-        AStaff.role = txtName.Text;
+        String role = txtRole.Text;
         //capture the Password
-        AStaff.password = txtName.Text;
-        //capture the Check Permanent Employee
-        AStaff.PermanentEmployee = chkPermanentEmployee.Checked;
-        //capture the Date of Birth
-        AStaff.DateofBirth = Convert.ToDateTime(Calendar1.SelectedDate);
-        //store the StaffID in the session object
-        Session["AStaff"] = AStaff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        String passwod = txtPassword.Text;
+        //capture the Permanent Employee
+        String PermanentEmployee = chkPermanentEmployee.Text;
+        //capture the dateOfBirth
+        String dateOfBirth = Calendar.SelectedDate.ToString();
+        //variable to store any error messages
+        String Error = "";
+        //validate the data
+        Error = AStaff.Valid(name,email,role,passwod,dateOfBirth);
+        if (Error == "")
 
-        
+        {
+            //capture the StaffID
+            AStaff.StaffID = Convert.ToInt32(txtStaffID.Text); //Gives error with letters.
+                                                               //capture the Name
+            AStaff.name = txtName.Text;
+            //capture the Email
+            AStaff.email = txtEmail.Text;
+            //capture the Role
+            AStaff.role = txtRole.Text;
+            //capture the Password
+            AStaff.password = txtPassword.Text;
+            //capture the Check Permanent Employee
+            AStaff.PermanentEmployee = chkPermanentEmployee.Checked;
+            //capture the Date of Birth
+            AStaff.DateofBirth = Convert.ToDateTime(this.Calendar.SelectedDate);
+            //store the StaffID in the session object
+            Session["AStaff"] = AStaff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }    
         
 
         
@@ -75,7 +102,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtEmail.Text = AStaff.email;
             txtRole.Text = AStaff.role;
             txtPassword.Text = AStaff.password;
-            Calendar1.SelectedDate = AStaff.DateofBirth;
+            Calendar.SelectedDate = AStaff.DateofBirth;
             chkPermanentEmployee.Checked = AStaff.PermanentEmployee;
 
 
