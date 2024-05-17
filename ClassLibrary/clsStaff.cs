@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Diagnostics.SymbolStore;
+using System.Xml.Linq;
 
 namespace ClassLibrary
 {
@@ -146,5 +148,86 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string Name, string Email, string Role, string Password, string dateOfBirth)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //----------------------------------------------------------------------------------------------------||
+            //create a temporary variable to store the date values
+            //----------------------------------------------------------------------------------------------------||
+            //if the Name is blank
+            if (Name.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Name field cannot be blank : ";
+            }
+            //if the Name is greater than 50 characters
+            if (Name.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The Name cannot be longer than 50 characters : ";
+            }
+            //if the Email is blank
+            if (Email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Email field cannot be blank : ";
+            }
+            //if the Email is greater than 50 characters
+            if (Email.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Email cannot be longer than 50 characters : ";
+            }
+            //if the Role is blank
+            if (Role.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Role field cannot be blank : ";
+            }
+            //if the Role is greater than 50 characters
+            if (Role.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Role cannot be longer than 50 characters : ";
+            }
+            //if Password is blank
+            if (Password.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Password field cannot be blank : ";
+            }
+            //if Password is greater than 50 characters
+            if (Password.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Password cannot be longer than 50 characters : ";
+            }
+            //---------------------------------------------------------------------------------------------||
+            //copy the dateOfBirth value to the DateTemp variable
+            DateTime DateTemp;
+            DateTemp = Convert.ToDateTime(dateOfBirth);
+            DateTime DateMin = DateTime.Now.Date;
+            DateMin = DateMin.AddYears(-100);
+            DateTime DateMax = DateTime.Now.Date;
+            DateMax = DateMax.AddYears(-18);
+
+            // check to see if the date is less than today's date
+            if (DateTemp < DateMin)
+            {
+                Error = Error + "Staff cannot be older than 100 years old : ";
+            }
+
+            if (DateTemp > DateMax)
+            {
+                Error = Error + "Staff cannot be born today or in the future : ";
+            }
+        
+            //--------------------------------------------------------------------------------------------||
+            //return any error messages      
+            return Error;
+        }
+
     }
 }

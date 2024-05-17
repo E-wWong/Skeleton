@@ -24,7 +24,7 @@
             <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 96px; top: 241px; position: absolute" width="128px"></asp:TextBox>
             <asp:Label ID="lblDateOfBirth" runat="server" style="z-index: 1; left: 27px; top: 310px; position: absolute; width: 97px;" Text="Date of Birth"></asp:Label>
             <asp:CheckBox ID="chkPermanentEmployee" runat="server" style="z-index: 1; left: 112px; top: 291px; position: absolute" Text="Permanent Employee" />
-            <asp:Calendar ID="Calendar1" runat="server" style="z-index: 1; left: 18px; top: 340px; position: absolute; height: 188px; width: 259px"></asp:Calendar>
+            <asp:Calendar ID="Calendar" runat="server" style="z-index: 1; left: 18px; top: 340px; position: absolute; height: 188px; width: 259px"></asp:Calendar>
             <asp:TextBox ID="txtStaffID" runat="server" Style="z-index: 1; left: 96px; top: 42px; position: absolute" Width="128px" OnTextChanged="txtStaffID_TextChanged"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" Style="z-index: 1; left: 295px; top: 47px; position: absolute; margin-bottom: 0px" Text="Find" Width="60px" OnClick="btnFind_Click1" />
         </p>
