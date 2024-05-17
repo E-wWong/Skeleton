@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <asp:Label ID="lblShippingID" runat="server" style="z-index: 1; left: 9px; top: 13px; position: absolute" Text="Shipping ID" height="19px" width="93px"></asp:Label>
         <p>
-            <asp:TextBox ID="txtAddressLine1" runat="server" style="z-index: 1; left: 158px; top: 50px; position: absolute; width: 173px" OnTextChanged="txtAddressLine1_TextChanged">Address line 1</asp:TextBox>
+            <asp:TextBox ID="txtAddressLine1" runat="server" style="z-index: 1; left: 158px; top: 50px; position: absolute; width: 173px" OnTextChanged="txtAddressLine1_TextChanged"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click1" style="z-index: 1; left: 506px; top: 11px; position: absolute" Text="Find" />
         </p>
         <p>
@@ -18,8 +18,8 @@
             <asp:Label ID="lblAddress" runat="server" style="z-index: 1; left: 12px; top: 47px; position: absolute" Text="Address" height="19px" width="93px"></asp:Label>
         </p>
         <p>
-            <asp:TextBox ID="txtAddressLine2" runat="server" OnTextChanged="TextBox3_TextChanged" style="z-index: 1; left: 158px; top: 72px; position: absolute; width: 173px; margin-bottom: 21px">Address line 2</asp:TextBox>
-            <asp:TextBox ID="txtTownCity" runat="server" style="z-index: 1; left: 158px; top: 95px; position: absolute; width: 173px; height: 22px;">Town/City</asp:TextBox>
+            <asp:TextBox ID="txtAddressLine2" runat="server" OnTextChanged="TextBox3_TextChanged" style="z-index: 1; left: 158px; top: 72px; position: absolute; width: 173px; margin-bottom: 21px"></asp:TextBox>
+            <asp:TextBox ID="txtTownCity" runat="server" style="z-index: 1; left: 158px; top: 95px; position: absolute; width: 173px; height: 22px;"></asp:TextBox>
         </p>
         <p>
             &nbsp;</p>
@@ -33,7 +33,7 @@
         <asp:Label ID="lblDeliveryType" runat="server" style="z-index: 1; left: 13px; top: 188px; position: absolute; width: 93px; bottom: 464px;" Text="Delivery Type" height="19px"></asp:Label>
         </p>
         <p>
-            <asp:TextBox ID="txtCounty" runat="server" style="z-index: 1; left: 158px; top: 119px; position: absolute; width: 173px">County</asp:TextBox>
+            <asp:TextBox ID="txtCounty" runat="server" style="z-index: 1; left: 158px; top: 119px; position: absolute; width: 173px"></asp:TextBox>
         </p>
         <p>
             <asp:RadioButtonList ID="rblParcelSize" runat="server" style="z-index: 1; left: 158px; top: 277px; position: absolute; height: 27px; width: 82px">
@@ -43,7 +43,7 @@
             </asp:RadioButtonList>
             <asp:Label ID="lblParcelSize" runat="server" style="z-index: 1; left: 16px; top: 284px; position: absolute; margin-bottom: 0px" Text="Parcel Size" height="19px" width="93px"></asp:Label>
         </p>
-        <asp:TextBox ID="txtPostcode" runat="server" style="z-index: 1; left: 158px; top: 142px; position: absolute; width: 173px">Postcode</asp:TextBox>
+        <asp:TextBox ID="txtPostcode" runat="server" style="z-index: 1; left: 158px; top: 142px; position: absolute; width: 173px"></asp:TextBox>
         <asp:RadioButtonList ID="rblDeliveryType" runat="server" style="z-index: 1; left: 158px; top: 188px; position: absolute; height: 27px; width: 153px">
             <asp:ListItem>Tracked</asp:ListItem>
             <asp:ListItem>First Class</asp:ListItem>

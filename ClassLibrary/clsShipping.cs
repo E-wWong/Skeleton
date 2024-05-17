@@ -144,5 +144,118 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string shippingID, string address, string deliveryType, string parcelSize, string deliveryDate, string orderID)
+        {
+            //create a string variable to store the error
+            String Error = "";
+
+            //******  SHIPPING ID ***********************************************************************************************************************************************************************************************
+
+            if (shippingID.Length == 0)
+            {
+                //record the error
+                Error = Error + "Shipping ID cannot be left blank : ";
+            }
+
+            else if (Int64.Parse(shippingID) <= 0)
+            {
+                //record the error
+                Error = Error + "The shipping ID cannot be less than one : ";
+            }
+
+            else if (Int64.Parse(shippingID)> 2000000000)
+            {
+                //record the error
+                Error = Error + "The shipping ID cannot exceed 2000000000 : ";
+            } 
+
+            //****** ADDRESS ****************************************************************************************************************************************************************************************************
+            
+            if (address.Length == 4)
+            {
+                //record the error
+                Error = Error + "Address cannot be left blank : ";
+
+            }
+
+            else if (address.Length < 20)
+            {
+                //record the error
+                Error = Error + "Address has not reached the minimum character limit : ";
+
+            }
+
+            else if (address.Length > 160)
+            {
+                //record the error
+                Error = Error + "The address must me equal or less than 160 characters : ";
+            }
+
+            //****** DELIVERY TYPE **********************************************************************************************************************************************************************************************
+
+            if (deliveryType == "")
+            {
+                //record the error
+                Error = Error + "An option for delivery type must be selected : ";
+
+            }
+
+            //****** PARCEL SIZE ************************************************************************************************************************************************************************************************
+
+            if (parcelSize == "")
+            {
+                //record the error
+                Error = Error + "An option for parcel size must be selected ; ";
+
+            }
+
+            //****** DELIVERY DATE **********************************************************************************************************************************************************************************************
+
+            //create a string variable to store date values
+            DateTime DateTemp;
+            DateTime MaxDate;
+            MaxDate = DateTime.Now.Date;
+            MaxDate = MaxDate.AddDays(7);
+            DateTemp = Convert.ToDateTime(deliveryDate);
+
+            
+
+            if (DateTemp <= Convert.ToDateTime("31/12/2023"))
+            {
+                Error = Error + "Date cannot be before the company was created : ";
+            }
+
+            if (DateTemp > MaxDate)
+            {
+                //record the error
+                Error = Error + "The delivery date should not exceed 7 days : ";
+            }
+
+            //****** ORDER ID ***************************************************************************************************************************************************************************************************
+
+            if (orderID.Length == 0)
+            {
+                //record the error
+                Error = Error + "Order ID cannot be left blank : ";
+            }
+
+            else if (Int64.Parse(orderID) <= 0)
+            {
+                //record the error
+                Error = Error + "The order ID cannot be less than one : ";
+            }
+
+            else if (Int64.Parse(orderID) > 2000000000)
+            {
+                //record the error
+                Error = Error + "The shipping ID cannot exceed 2000000000 : ";
+            }
+
+            //****** RETURN ERROR ***********************************************************************************************************************************************************************************************
+
+            //return any error messages
+            return Error;
+        }
     }
 }
