@@ -23,17 +23,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
         //capture the customer details
-        ACustomer.customerID = Convert.ToInt32(txtCustomerID.Text);
-        ACustomer.name = txtName.Text;
-        ACustomer.email = txtEmail.Text;
-        ACustomer.mobileNum = Convert.ToString(txtMobileNum.Text);
-        ACustomer.password = txtPassword.Text;
-        ACustomer.accountCreationDate = Convert.ToDateTime(clndrAccountCreationDate.SelectedDate);
-        ACustomer.returningCustomer = chkReturningCustomer.Checked;
-        //store the customerID in session object
-        Session["ACustomer"] = ACustomer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
+        string CustomerId = txtCustomerID.Text;
+        string Name = txtName.Text;
+        string Email = txtEmail.Text;
+        string MobileNum = txtMobileNum.Text;
+        string Password = txtPassword.Text;
+        string AccountCreationDate = clndrAccountCreationDate.SelectedDate.ToString();
+        string ReturningCustomer = chkReturningCustomer.Checked.ToString();
+        string Error = "";
+        //validate the data
+        Error = ACustomer.Valid(CustomerId, Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
+        if (Error == "")
+        {
+            //capture the customer details
+            ACustomer.customerID = Convert.ToInt32(CustomerId);
+            ACustomer.name = Name;
+            ACustomer.email = Email;
+            ACustomer.mobileNum = MobileNum;
+            ACustomer.password = Password;
+            ACustomer.accountCreationDate = Convert.ToDateTime(AccountCreationDate);
+            ACustomer.returningCustomer = Convert.ToBoolean(ReturningCustomer);
+            //store the customerID in session object
+            Session["ACustomer"] = ACustomer;
+            //navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

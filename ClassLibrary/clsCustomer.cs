@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace ClassLibrary
 {
@@ -34,10 +35,120 @@ namespace ClassLibrary
             }
         }
 
+        //************************************************************************************************************
+
         public string Valid(string customerID, string name, string email, string mobileNum, string password, string accountCreationDate, string returningCustomer)
         {
-            return "";
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+
+            //************************************************************************************************************
+
+            //if customerID is left blank
+            if (customerID.Length == 0)
+            {
+                //record the error
+                Error = Error + "customerID cannot be left blank : ";
+            }
+
+            //only run if customerID is not blank
+            if (customerID.Length != 0)
+            {
+                //if customerID is less than 0
+                if (Int64.Parse(customerID) < 1)
+                {
+                    //record the error
+                    Error = Error + "customerID cannot be less than 1 : ";
+                }
+
+                //if customerID is greater than 2,000,000,000
+                if (Int64.Parse(customerID) > 2000000000)
+                {
+                    //record the error
+                    Error = Error + "customerID cannot be greater than 2,000,000,000 : ";
+                }
+            }
+
+            //************************************************************************************************************
+
+            //if name is greater than 50 characters
+            if (name.Length > 50)
+            {
+                //record the error
+                Error = Error + "name may not be greater than 50 characters : ";
+            }
+
+            //if name is at least 1 character
+            if (name.Length < 1)
+            {
+                //record the error
+                Error = Error + "name must be at least 1 character long : ";
+            }
+
+            //************************************************************************************************************
+
+            //if email is greater than 50 characters
+            if (email.Length > 50)
+            {
+                //record the error
+                Error = Error + "email may not be greater than 50 characters : ";
+            }
+
+            //if email is at least 1 character
+            if (email.Length < 1)
+            {
+                //record the error
+                Error = Error + "email must be at least 1 character long : ";
+            }
+
+            //************************************************************************************************************
+
+            //if mobileNum is greater than 20 characters
+            if (mobileNum.Length > 20)
+            {
+                //record the error
+                Error = Error + "mobile number may not be greater than 20 characters : ";
+            }
+
+            //************************************************************************************************************
+
+            //if password is greater than 100 characters
+            if (password.Length > 100)
+            {
+                //record the error
+                Error = Error + "password may not be greater than 100 characters : ";
+            }
+
+            //if password is at least 1 character
+            if (password.Length < 10)
+            {
+                //record the error
+                Error = Error + "password must be at least 10 characters long : ";
+            }
+
+            //************************************************************************************************************
+
+            //create a string variable to store date values
+            DateTime StartDate;
+            DateTime TempDate;
+            StartDate = Convert.ToDateTime("01/01/2024");
+            TempDate = Convert.ToDateTime(accountCreationDate);
+            if (TempDate > DateTime.Now.Date)
+            {
+                Error = Error + "account creation date cannot be in the future : ";
+            }
+            if(TempDate < StartDate)
+            {
+                Error = Error + "account creation date cannot be before 01/01/2024 : ";
+            }
+
+            return Error;
+
         }
+
+        //************************************************************************************************************
 
         //private data member for the customerID property
         private Int32 mCustomerID;
@@ -57,6 +168,8 @@ namespace ClassLibrary
             }
         }
 
+        //************************************************************************************************************
+
         //private data member for the name property
         private string mName;
 
@@ -74,6 +187,8 @@ namespace ClassLibrary
                 mName = value;
             }
         }
+
+        //************************************************************************************************************
 
         //private data member for the email property
         private string mEmail;
@@ -93,6 +208,8 @@ namespace ClassLibrary
             }
         }
 
+        //************************************************************************************************************
+
         //private data member for the mobileNum property
         private string mMobileNum;
 
@@ -110,6 +227,8 @@ namespace ClassLibrary
                 mMobileNum = value;
             }
         }
+
+        //************************************************************************************************************
 
         //private data member for the password property
         private string mPassword;
@@ -129,6 +248,8 @@ namespace ClassLibrary
             }
         }
 
+        //************************************************************************************************************
+
         //private data member for the accountCreationDate property
         private DateTime mAccountCreationDate;
 
@@ -146,6 +267,8 @@ namespace ClassLibrary
                 mAccountCreationDate = value;
             }
         }
+
+        //************************************************************************************************************
 
         //private data member for the returningCustomer property
         private Boolean mReturningCustomer;
