@@ -20,6 +20,8 @@ namespace Testing1
         string AccountCreationDate = DateTime.Now.ToShortDateString();
         string ReturningCustomer = "1";
 
+        //************************************************************************************************************
+
         [TestMethod]
         public void instanceOK()
         {
