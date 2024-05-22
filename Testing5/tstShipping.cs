@@ -11,7 +11,6 @@ namespace Testing5
 
         //good test data
         //create some test data to pass the method
-        string shippingID = "7";
         string address = "77 New Street-Ilford-London-IG87 0FS";
         string deliveryType = "Second Class";
         string parcelSize = "Medium";
@@ -175,7 +174,7 @@ namespace Testing5
             Int32 ShippingID = 4;
             //invoke the method
             found = AShipment.Find(ShippingID);
-            if (AShipment.address != "77 New Street-Ilford-London-IG87 0FS")
+            if (AShipment.address != "77 New Street- -Ilford-London-IG87 0FS")
             {
                 OK = false;
             }

@@ -103,5 +103,23 @@ namespace ClassLibrary
             //execute the query returning the primary key value 
             return DB.Execute("sproc_tblShipping_Insert");
         }
+
+        public void Update()
+        {
+            //update an existing record based on the values of Thisshipment
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameter for the stored procedure
+            DB.AddParameter("@shippingID", mThisShipment.shippingID);
+            DB.AddParameter("@address", mThisShipment.address);
+            DB.AddParameter("@deliveryType", mThisShipment.deliveryType);
+            DB.AddParameter("@parcelSize", mThisShipment.parcelSize);
+            DB.AddParameter("@deliveryDate", mThisShipment.deliveryDate);
+            DB.AddParameter("@orderID", mThisShipment.orderID);
+            DB.AddParameter("@isDispatched", mThisShipment.isDispatched);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblShipping_Update");
+        }
     }
 }
