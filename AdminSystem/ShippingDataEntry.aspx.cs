@@ -46,30 +46,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsShipping
         clsShipping AShipment = new clsShipping();
         //capture the data
-        string shippingID = txtShippingID.Text;
         string address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
         string deliveryType = rblDeliveryType.Text;
         string parcelSize = rblParcelSize.Text;
         string deliveryDate = cDeliveryDate.SelectedDate.ToString();
         string orderID = txtOrderID.Text;
+        string isDispatched = chkIsDispatched.Text;
+
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+        Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
         if (Error == "")
         {
-            //capture some data
-            AShipment.shippingID = Convert.ToInt32(txtShippingID.Text);
+            //capture some data            
             AShipment.address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
             AShipment.deliveryType = rblDeliveryType.Text;
             AShipment.parcelSize = rblParcelSize.Text;
             AShipment.deliveryDate = Convert.ToDateTime(cDeliveryDate.SelectedDate);
             AShipment.orderID = Convert.ToInt32(txtOrderID.Text);
             AShipment.isDispatched = chkIsDispatched.Checked;
-            //Store the data in the session object
-            Session["AShipment"] = AShipment;
-            //navigate to the view page
-            Response.Redirect("ShippingViewer.aspx");
+            //create a new instance of the shipping collection
+            clsShippingCollection shippingList = new clsShippingCollection();
+            //set the ThisShipment property
+            shippingList.ThisShipment = AShipment;
+            //ad the new record
+            shippingList.Add();
+            //redirect back to the list page
+            Response.Redirect("shippingList.aspx");
         }
         else
         {
@@ -118,23 +122,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             totalAddress[aIndex] = address.Substring(0);
 
-            if (totalAddress[4] != "")
-            {
-                txtAddressLine1.Text = totalAddress[0];
-                txtAddressLine2.Text = " ";
-                txtTownCity.Text = totalAddress[1];
-                txtCounty.Text = totalAddress[2];
-                txtPostcode.Text = totalAddress[3];
-
-            }
-            else
-            {
-                txtAddressLine1.Text = totalAddress[0];
-                txtAddressLine2.Text = totalAddress[1];
-                txtTownCity.Text = totalAddress[2];
-                txtCounty.Text = totalAddress[3];
-                txtPostcode.Text = totalAddress[4];
-            }
+            txtAddressLine1.Text = totalAddress[0];
+            txtAddressLine2.Text = totalAddress[1];
+            txtTownCity.Text = totalAddress[2];
+            txtCounty.Text = totalAddress[3];
+            txtPostcode.Text = totalAddress[4];
+            
+        }
 
             //displaying the deliveryType
             if (AShipment.deliveryType == "Tracked")
@@ -177,12 +171,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 rblDeliveryType.SelectedIndex = -1;
             }
             //displaying the deliveryDate
-            //cDeliveryDate.SelectedDates.Clear();
             cDeliveryDate.SelectedDate = (AShipment.deliveryDate);
             //displaying the orderID
             txtOrderID.Text = AShipment.orderID.ToString();
             //displaying the isDispatched
             chkIsDispatched.Checked = AShipment.isDispatched;
-        } 
-    }
+    } 
 }
+

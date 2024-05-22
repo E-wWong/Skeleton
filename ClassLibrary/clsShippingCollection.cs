@@ -10,6 +10,8 @@ namespace ClassLibrary
 
         //private data member for the list
         List<clsShipping> mShippingList = new List<clsShipping>();
+        //private member of daa for thisShipment
+        clsShipping mThisShipment = new clsShipping();
 
         //constructor for the class
         public clsShippingCollection() 
@@ -71,6 +73,35 @@ namespace ClassLibrary
                 ////we shall worry about this later
             }
         }
-        public clsShipping ThisShipment { get; set; }
+        public clsShipping ThisShipment 
+        {
+            get
+            {
+                //return the private data
+                return mThisShipment;
+            }
+            set
+            {
+                //set the private data
+                mThisShipment = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a record to the database on the values of mThisShipment
+            //connects to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameter for the stored procedure
+            DB.AddParameter("@address", mThisShipment.address);
+            DB.AddParameter("@deliveryType", mThisShipment.deliveryType);
+            DB.AddParameter("@parcelSize", mThisShipment.parcelSize);
+            DB.AddParameter("@deliveryDate", mThisShipment.deliveryDate);
+            DB.AddParameter("@orderID", mThisShipment.orderID);
+            DB.AddParameter("@isDispatched", mThisShipment.isDispatched);
+
+            //execute the query returning the primary key value 
+            return DB.Execute("sproc_tblShipping_Insert");
+        }
     }
 }

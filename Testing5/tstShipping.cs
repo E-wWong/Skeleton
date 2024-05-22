@@ -296,149 +296,11 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-        //****** TESTING PARAMETERS OF SHIPPING ID ******************************************************************************************************************************************************************************
-
-        [TestMethod]
-        public void ShippingIdExtremeMin()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "-10"; //this should trigger an error
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void ShippingIdMinMinusOne()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "0"; //this should trigger an error
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void ShippingIdMin()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "1"; //this should be ok
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void ShippingIdMinPlusOne()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "2"; //this should be ok
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void ShippingIdMaxMinusOne()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "1999999999"; //this should be ok
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void ShippingIdMax()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "2000000000"; //this should be ok
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void ShippingIdMaxPlusOne()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "2000000001"; //this should be ok
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-
-        [TestMethod]
-        public void ShippingIdMid()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "3545"; //this should be ok
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void ShippingIdExtremeMax()
-        {
-            //create an instance of a class we want to create
-            clsShipping AShipment = new clsShipping();
-            //string c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string shippingID = "10000000000"; //this should trigger an error
-            //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-
-        }
-
+        
         //****** TESTING PARAMETERS OF ADDRESS **********************************************************************************************************************************************************************************
 
         [TestMethod]
@@ -451,7 +313,7 @@ namespace Testing5
             //create some test data to pass to the method
             string address = ""; //this should trigger an error
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -466,7 +328,7 @@ namespace Testing5
             //create some test data to pass to the method
             string address = "aaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -481,7 +343,7 @@ namespace Testing5
             //create some test data to pass to the method
             string address = "aaaaaaaaaaaaaaaaaaaaa"; //this should be ok
                                    //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -497,7 +359,7 @@ namespace Testing5
             string address = "";
             address = address.PadRight(159, 'a');//invoke the method
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -513,7 +375,7 @@ namespace Testing5
             string address = "";
             address = address.PadRight(160, 'a');//invoke the method
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -530,7 +392,7 @@ namespace Testing5
             string address = "";
             address = address.PadRight(90, 'a');//invoke the method
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -545,7 +407,7 @@ namespace Testing5
             //create some test data to pass to the method
             string address = "";
             address = address.PadRight(161, 'a');//invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -561,7 +423,7 @@ namespace Testing5
             string address = "";
             address = address.PadRight(500, 'a'); //this should be ok
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -577,7 +439,7 @@ namespace Testing5
             //create some test data to pass to the method
             string deliveryType = "";
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -594,7 +456,7 @@ namespace Testing5
             //create some test data to pass to the method
             string parcelSize = "";
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -615,7 +477,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -634,7 +496,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -653,7 +515,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -672,7 +534,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -692,7 +554,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -712,7 +574,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -732,7 +594,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -752,7 +614,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -772,7 +634,7 @@ namespace Testing5
             //convert the variable into a string variable 
             string deliveryDate = TestDate.ToString();
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -789,7 +651,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "-10"; //this should trigger an error
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -804,7 +666,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "0"; //this should trigger an error
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -819,7 +681,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "1"; //this should be ok
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -834,7 +696,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "2"; //this should be ok
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -849,7 +711,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "1999999999";
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -864,7 +726,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "2000000000";
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -879,7 +741,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "2000000001";
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -895,7 +757,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "3545";
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -910,7 +772,7 @@ namespace Testing5
             //create some test data to pass to the method
             string orderID = "10000000000";
             //invoke the method
-            Error = AShipment.Valid(shippingID, address, deliveryType, parcelSize, deliveryDate, orderID);
+            Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
 

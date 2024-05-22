@@ -31,4 +31,12 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstShippingList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indiate this is a new record
+        Session["shippingID"] = -1;
+        //redirect to the entry data page
+        Response.Redirect("shippingDataEntry.aspx");
+    }
 }
