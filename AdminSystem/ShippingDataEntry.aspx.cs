@@ -11,8 +11,103 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+
+    //variable to store the primary key with the page level scope
+    Int32 shippingID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the shipment to be processed
+        shippingID = Convert.ToInt32(Session["shippingID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (shippingID != 0)
+            {
+                //display the current data for the record
+                DisplayShipment();
+            }
+        }
+    }
+
+    void DisplayShipment()
+    {
+        //create an instance of the shipment book
+        clsShippingCollection shipmentBook = new clsShippingCollection();
+        //find the record to update
+        shipmentBook.ThisShipment.Find(shippingID);
+        //display the data for the record
+        txtShippingID.Text = shipmentBook.ThisShipment.shippingID.ToString();
+        //displaying the address
+        String address = shipmentBook.ThisShipment.address;
+
+        String[] totalAddress = new string[5];
+        int aIndex = 0;
+
+        while (address.Contains("-"))
+        {
+            int hIndex = 0;
+            hIndex = address.IndexOf("-");
+            totalAddress[aIndex] = address.Substring(0, hIndex);
+
+            address = address.Substring(hIndex + 1);
+            aIndex++;
+        }
+
+        totalAddress[aIndex] = address.Substring(0);
+
+        txtAddressLine1.Text = totalAddress[0];
+        txtAddressLine2.Text = totalAddress[1];
+        txtTownCity.Text = totalAddress[2];
+        txtCounty.Text = totalAddress[3];
+        txtPostcode.Text = totalAddress[4];
+
+        //displaying the deliveryType
+        if (shipmentBook.ThisShipment.deliveryType == "Tracked")
+        {
+            rblDeliveryType.SelectedIndex = -1;
+            rblDeliveryType.Items[0].Selected = true;
+        }
+        else if (shipmentBook.ThisShipment.deliveryType == "First Class")
+        {
+            rblDeliveryType.SelectedIndex = -1;
+            rblDeliveryType.Items[1].Selected = true;
+        }
+        else if (shipmentBook.ThisShipment.deliveryType == "Second Class")
+        {
+            rblDeliveryType.SelectedIndex = -1;
+            rblDeliveryType.Items[2].Selected = true;
+        }
+        else
+        {
+            rblDeliveryType.SelectedIndex = -1;
+        }
+        //displaying the parcelType
+        if (shipmentBook.ThisShipment.parcelSize == "Small")
+        {
+            rblParcelSize.SelectedIndex = -1;
+            rblParcelSize.Items[0].Selected = true;
+        }
+        else if (shipmentBook.ThisShipment.parcelSize == "Medium")
+        {
+            rblParcelSize.SelectedIndex = -1;
+            rblParcelSize.Items[1].Selected = true;
+        }
+        else if (shipmentBook.ThisShipment.parcelSize == "Large")
+        {
+            rblParcelSize.SelectedIndex = -1;
+            rblParcelSize.Items[2].Selected = true;
+        }
+        else
+        {
+            rblDeliveryType.SelectedIndex = -1;
+        }
+        //displaying the deliveryDate
+        cDeliveryDate.SelectedDate = (shipmentBook.ThisShipment.deliveryDate);
+        //displaying the orderID
+        txtOrderID.Text = shipmentBook.ThisShipment.orderID.ToString();
+        //displaying the isDispatched
+        chkIsDispatched.Checked = shipmentBook.ThisShipment.isDispatched;
 
     }
 
@@ -59,7 +154,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AShipment.Valid(address, deliveryType, parcelSize, deliveryDate, orderID);
         if (Error == "")
         {
-            //capture some data            
+            //capture some data
+            AShipment.shippingID = shippingID;
             AShipment.address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
             AShipment.deliveryType = rblDeliveryType.Text;
             AShipment.parcelSize = rblParcelSize.Text;
@@ -68,12 +164,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AShipment.isDispatched = chkIsDispatched.Checked;
             //create a new instance of the shipping collection
             clsShippingCollection shippingList = new clsShippingCollection();
-            //set the ThisShipment property
-            shippingList.ThisShipment = AShipment;
-            //ad the new record
-            shippingList.Add();
+            
+            //if this is a new record i.e. shippingID = 0 the a the data
+            if (shippingID == 0)
+            {
+                //set the ThisAddress property
+                shippingList.ThisShipment = AShipment;
+                //add the new record
+                shippingList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                shippingList.ThisShipment.Find(shippingID);
+                //set the thisShipment property
+                shippingList.ThisShipment = AShipment;
+                //update the record
+                shippingList.Update();
+            }
             //redirect back to the list page
-            Response.Redirect("shippingList.aspx");
+            Response.Redirect("ShippingList.aspx");
         }
         else
         {
@@ -127,8 +238,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtTownCity.Text = totalAddress[2];
             txtCounty.Text = totalAddress[3];
             txtPostcode.Text = totalAddress[4];
-            
-        }
 
             //displaying the deliveryType
             if (AShipment.deliveryType == "Tracked")
@@ -176,6 +285,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderID.Text = AShipment.orderID.ToString();
             //displaying the isDispatched
             chkIsDispatched.Checked = AShipment.isDispatched;
+        }         
     } 
 }
 
