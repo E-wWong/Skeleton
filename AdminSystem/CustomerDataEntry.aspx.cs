@@ -32,7 +32,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string ReturningCustomer = chkReturningCustomer.Checked.ToString();
         string Error = "";
         //validate the data
-        Error = ACustomer.Valid(CustomerId, Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
+        Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
         if (Error == "")
         {
             //capture the customer details
@@ -43,10 +43,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.password = Password;
             ACustomer.accountCreationDate = Convert.ToDateTime(AccountCreationDate);
             ACustomer.returningCustomer = Convert.ToBoolean(ReturningCustomer);
-            //store the customerID in session object
-            Session["ACustomer"] = ACustomer;
-            //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = ACustomer;
+            //add the new record
+            CustomerList.Add();
+            //redirect back to the list page
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
