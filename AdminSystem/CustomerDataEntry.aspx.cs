@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -8,8 +10,20 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 CustomerID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (CustomerID != -1)
+            {
+                //display the current data for the record
+                DisplayCustomer();
+            }
+        }
 
     }
 
@@ -45,10 +59,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.returningCustomer = Convert.ToBoolean(ReturningCustomer);
             //create a new instance of the customer collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //set the ThisCustomer property
-            CustomerList.ThisCustomer = ACustomer;
-            //add the new record
-            CustomerList.Add();
+            //if this is a new record then add the data
+            if (CustomerID == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = ACustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(CustomerID);
+                //set the ThisCustomerProperty
+                CustomerList.ThisCustomer = ACustomer;
+                //update the record
+                CustomerList.Update();
+            }
             //redirect back to the list page
             Response.Redirect("CustomerList.aspx");
         }
@@ -78,10 +106,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerID.Text = ACustomer.customerID.ToString();
             txtName.Text = ACustomer.name;
             txtEmail.Text = ACustomer.email;
-            txtMobileNum.Text = ACustomer.mobileNum.ToString();
+            txtMobileNum.Text = ACustomer.mobileNum;
             txtPassword.Text = ACustomer.password;
             clndrAccountCreationDate.SelectedDate = ACustomer.accountCreationDate;
             chkReturningCustomer.Checked = ACustomer.returningCustomer;
         }
+    }
+
+    void DisplayCustomer()
+    {
+        //create an instance of the customer
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        //find the record to update
+        Customer.ThisCustomer.Find(CustomerID);
+        //dispay the data for the record
+        txtCustomerID.Text = Customer.ThisCustomer.customerID.ToString();
+        txtName.Text = Customer.ThisCustomer.name;
+        txtEmail.Text = Customer.ThisCustomer.email;
+        txtMobileNum.Text = Customer.ThisCustomer.mobileNum;
+        txtPassword.Text = Customer.ThisCustomer.password;
+        clndrAccountCreationDate.SelectedDate = Customer.ThisCustomer.accountCreationDate;
+        chkReturningCustomer.Checked = Customer.ThisCustomer.returningCustomer;
     }
 }
