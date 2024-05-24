@@ -104,6 +104,17 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblShipping_Insert");
         }
 
+        public void Delete()
+        {
+            //deletes the record pointed to by ThisShipment
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@shippingID", mThisShipment.shippingID);
+            //execute the stored procedure 
+            DB.Execute("sproc_tblShipping_Delete");
+        }
+
         public void Update()
         {
             //update an existing record based on the values of Thisshipment

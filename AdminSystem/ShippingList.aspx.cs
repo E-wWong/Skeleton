@@ -56,7 +56,28 @@ public partial class _1_List : System.Web.UI.Page
         }
         else
         {
-            lblError.Text = "Please selecta record from the list to edit";
+            lblError.Text = "Please select a record from the list to edit";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted 
+        Int32 shippingID;
+        //if a record has been selected from the list 
+        if (lstShippingList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record delete
+            shippingID = Convert.ToInt32(lstShippingList.SelectedValue);
+            //store the data in the session object
+            Session["shippingID"] = shippingID;
+            //redirect to the delete page
+            Response.Redirect("ShippingConfirmDelete.aspx");
+        }
+        else
+        {
+            //display an error message
+            lblError.Text = "Please select a record from the list to delete";
         }
     }
 }
