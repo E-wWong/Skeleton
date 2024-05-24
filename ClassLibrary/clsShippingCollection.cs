@@ -16,34 +16,12 @@ namespace ClassLibrary
         //constructor for the class
         public clsShippingCollection() 
         {
-            //variable for the index
-            Int32 index = 0;
-            //variable to store the record count
-            Int32 recordCount = 0;
-            //object for the data connect
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedue
+            //execute the stored procedure
             DB.Execute("sproc_tblShipping_SelectAll");
-            //get the count of records
-            recordCount = DB.Count;
-            //while there are records to process
-            while (index < recordCount)
-            {
-                //create a blank address
-                clsShipping aShipment = new clsShipping();
-                //read in all the fields for the current record
-                aShipment.shippingID = Convert.ToInt32(DB.DataTable.Rows[index]["shippingID"]);
-                aShipment.address = Convert.ToString(DB.DataTable.Rows[index]["address"]);
-                aShipment.deliveryType = Convert.ToString(DB.DataTable.Rows[index]["deliveryType"]);
-                aShipment.parcelSize = Convert.ToString(DB.DataTable.Rows[index]["parcelSize"]);
-                aShipment.deliveryDate = Convert.ToDateTime(DB.DataTable.Rows[index]["deliveryDate"]);
-                aShipment.orderID = Convert.ToInt32(DB.DataTable.Rows[index]["orderID"]);
-                aShipment.isDispatched = Convert.ToBoolean(DB.DataTable.Rows[index]["isDispatched"]);
-                //add the record to the private data member
-                mShippingList.Add(aShipment);
-                //point at the next record
-                index++;
-            }
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
 
         //public property for the address list
@@ -115,6 +93,19 @@ namespace ClassLibrary
             DB.Execute("sproc_tblShipping_Delete");
         }
 
+        public void ReportByAddress(string address)
+        {
+            //filter the records based on a full or partial address
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the address parameter to the database
+            DB.AddParameter("@address", address);
+            //execute the stored procedure
+            DB.Execute("sproc_tblShipping_FilterByAddress");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
         public void Update()
         {
             //update an existing record based on the values of Thisshipment
@@ -131,6 +122,37 @@ namespace ClassLibrary
 
             //execute the stored procedure
             DB.Execute("sproc_tblShipping_Update");
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 index = 0;
+            //variable to store the record count
+            int recordCount;
+            //get the count of records
+            recordCount = DB.Count;
+            //clear the private array list
+            mShippingList = new List<clsShipping>();
+            //while there are records to process 
+            while (index < recordCount)
+            {
+                //create a blank shipping object
+                clsShipping AShipment = new clsShipping();
+                //read the fields from the current record
+                AShipment.shippingID = Convert.ToInt32(DB.DataTable.Rows[index]["shippingID"]);
+                AShipment.address = Convert.ToString(DB.DataTable.Rows[index]["address"]);
+                AShipment.deliveryType = Convert.ToString(DB.DataTable.Rows[index]["deliveryType"]);
+                AShipment.parcelSize = Convert.ToString(DB.DataTable.Rows[index]["parcelSize"]);
+                AShipment.deliveryDate = Convert.ToDateTime(DB.DataTable.Rows[index]["deliveryDate"]);
+                AShipment.orderID = Convert.ToInt32(DB.DataTable.Rows[index]["orderID"]);
+                AShipment.isDispatched = Convert.ToBoolean(DB.DataTable.Rows[index]["isDispatched"]);
+                //add the record to the private data member
+                mShippingList.Add(AShipment);
+                //point to the next record
+                index++;
+            }
         }
     }
 }

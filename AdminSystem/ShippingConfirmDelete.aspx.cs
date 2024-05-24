@@ -16,7 +16,6 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     {
         //get the number of the shipment to be deleted from the session object
         shippingID = Convert.ToInt32(Session["shippingID"]);
-
     }
 
     protected void btnYes_Click(object sender, EventArgs e)
