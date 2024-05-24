@@ -47,9 +47,13 @@
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsInventoryManagement.cs" />
+    <Compile Include="clsOrderCollection.cs" />
     <Compile Include="clsShipping.cs" />
+<<<<<<
+
     <Compile Include="clsShippingCollection.cs" />
     <Compile Include="clsStaff.cs" />
+>>>>>>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
