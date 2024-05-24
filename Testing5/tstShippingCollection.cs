@@ -195,5 +195,60 @@ namespace Testing5
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByAddressMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsShippingCollection AllShipments = new clsShippingCollection();
+            //create an instance of the filtered data
+            clsShippingCollection FilteredShipments = new clsShippingCollection();
+            //apply a blank string (should return all records)
+            FilteredShipments.ReportByAddress("");
+            //test o see that the two values are the sam
+            Assert.AreEqual(AllShipments.Count, FilteredShipments.Count);
+        }
+
+        [TestMethod]
+        public void ReportByAddressNoneFound()
+        {
+            //create an instance of the class we want t create
+            clsShippingCollection FilteredShipments = new clsShippingCollection();
+            //apply a shippingID that doen't exist
+            FilteredShipments.ReportByAddress("xxxxxxxxxxxx- -xxxx- -xxxxxxxxxxxxx");
+            //test to see that there are no records
+            Assert.AreEqual(2, FilteredShipments.Count);
+        }
+
+        [TestMethod]
+        public void ReportByAddressTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsShippingCollection FilteredShipments = new clsShippingCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply an address that doesn't exist
+            FilteredShipments.ReportByAddress("xxxxxxxxxxxx- -xxxx- -xxxxxxxxxxxxx");
+            //check that the correct number of records are dound
+            if (FilteredShipments.Count == 2)
+            {
+                //check to see that the first record is 25
+                if (FilteredShipments.ShipmentList[0].shippingID != 31)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 26
+                if (FilteredShipments.ShipmentList[1].shippingID != 32) 
+                { 
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 }

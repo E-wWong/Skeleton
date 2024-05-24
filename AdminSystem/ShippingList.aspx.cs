@@ -26,7 +26,7 @@ public partial class _1_List : System.Web.UI.Page
         lstShippingList.DataSource = shipments.ShipmentList;
         //set the name of the primary key
         lstShippingList.DataValueField = "shippingID";
-        //set the data field to diplay
+        //set the data field to display
         lstShippingList.DataTextField = "address";
         //bind the data to the list
         lstShippingList.DataBind();
@@ -79,5 +79,40 @@ public partial class _1_List : System.Web.UI.Page
             //display an error message
             lblError.Text = "Please select a record from the list to delete";
         }
+    }
+
+    protected void btnApplyfilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsShippingCollection aShipment = new clsShippingCollection();
+        //retrieve the value of address from the presentation layer
+        aShipment.ReportByAddress(txtEnterAddress.Text);
+        //set the data source to the list of addresses in the collection
+        lstShippingList.DataSource = aShipment.ShipmentList;
+        //set the name of the primary key
+        lstShippingList.DataValueField = "shippingID";
+        //set the name of the field to display
+        lstShippingList.DataTextField = "address";
+        //bind the data to the list
+        lstShippingList.DataBind();
+    }
+
+
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsShippingCollection aShipment = new clsShippingCollection();
+        //set an empty string
+        aShipment.ReportByAddress("");
+        //clear any existing filter to tidy up the interface
+        txtEnterAddress.Text = "";
+        lstShippingList.DataSource = aShipment.ShipmentList;
+        //set the name of the primary key
+        lstShippingList.DataValueField = "shippingID";
+        //set the name of the field to display
+        lstShippingList.DataTextField = "address";
+        //bind the data to the list
+        lstShippingList.DataBind();
     }
 }
