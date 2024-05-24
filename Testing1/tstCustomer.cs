@@ -250,7 +250,7 @@ namespace Testing1
             //invoke the method
             Found = ACustomer.Find(customerID);
             //check the address ID
-            if (ACustomer.password != "password")
+            if (ACustomer.password != "password234324234")
                 OK = false;
             //test to see that the result is correct
             Assert.IsTrue(OK);

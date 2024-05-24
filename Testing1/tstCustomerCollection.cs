@@ -3,6 +3,7 @@ using System;
 using ClassLibrary;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using System.Linq.Expressions;
 
 namespace Testing1
 {
@@ -191,6 +192,61 @@ namespace Testing1
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             //test to see that the record was not found
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void reportByEmailMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection ACustomer = new clsCustomerCollection();
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string (should return all records)
+            FilteredCustomers.ReportByEmail("");
+            //test to see that the 2 values are the same
+            Assert.AreEqual(ACustomer.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void reportByEmailNoneFound()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply an email that doesnt exist
+            FilteredCustomers.ReportByEmail("FakeEmail@Fake.com");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void reportByEmailTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply an email that doesnt exist
+            FilteredCustomers.ReportByEmail("FAKE-EMAIL-TEST");
+            //check that the correct number of records are found
+            if (FilteredCustomers.Count == 2)
+            {
+                //check to see that the first record is 15
+                if (FilteredCustomers.CustomerList[0].customerID != 15)
+                {
+                    OK = false;
+                }
+                //check to see that the second record is 17
+                if (FilteredCustomers.CustomerList[1].customerID != 17)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
         }
     }
 }
