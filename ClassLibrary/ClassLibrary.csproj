@@ -52,6 +52,7 @@
 <<<<<<
 
     <Compile Include="clsShippingCollection.cs" />
+    <Compile Include="clsShippingUser.cs" />
     <Compile Include="clsStaff.cs" />
 >>>>>>
     <Compile Include="Properties\AssemblyInfo.cs" />
