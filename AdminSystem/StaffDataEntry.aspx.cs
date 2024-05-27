@@ -9,10 +9,41 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 staffID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the staffs to be processed 
+        staffID = Convert.ToInt32(Session["staffID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (staffID != -1)
+            {
+                //display the current data for the record
+                DisplayStaff();
+            }
+        }
 
     }
+    void DisplayStaff()
+    {
+     //create an instance of the staffdata 
+     clsStaffCollection StaffData = new clsStaffCollection();
+     //find the record to update 
+     StaffData.ThisStaff.Find(staffID);
+     //display the data for the record
+     txtStaffID.Text = StaffData.ThisStaff.StaffID.ToString();
+     txtName.Text = StaffData.ThisStaff.name.ToString();
+     txtEmail.Text = StaffData.ThisStaff.email.ToString();
+     txtRole.Text = StaffData.ThisStaff.role.ToString();
+     txtPassword.Text = StaffData.ThisStaff.password.ToString();
+     Calendar.SelectedDate = StaffData.ThisStaff.DateofBirth;
+     chkPermanentEmployee.Checked = StaffData.ThisStaff.PermanentEmployee;
+
+
+    }
+
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
@@ -27,7 +58,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the Role
         String role = txtRole.Text;
         //capture the Password
-        String passwod = txtPassword.Text;
+        String password = txtPassword.Text;
         //capture the Permanent Employee
         String PermanentEmployee = chkPermanentEmployee.Text;
         //capture the dateOfBirth
@@ -35,35 +66,62 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any error messages
         String Error = "";
         //validate the data
-        Error = AStaff.Valid(name,email,role,passwod,dateOfBirth);
+        Error = AStaff.Valid(name, email, role, password, dateOfBirth);
         if (Error == "")
 
         {
             //capture the StaffID
-            AStaff.StaffID = Convert.ToInt32(txtStaffID.Text); //Gives error with letters.
-                                                               //capture the Name
-            AStaff.name = txtName.Text;
+            AStaff.StaffID = staffID; //Gives error with letters.
+            //capture the Name
+            AStaff.name = name;
             //capture the Email
-            AStaff.email = txtEmail.Text;
+            AStaff.email = email;
             //capture the Role
-            AStaff.role = txtRole.Text;
+            AStaff.role = role;
             //capture the Password
-            AStaff.password = txtPassword.Text;
+            AStaff.password = password;
             //capture the Check Permanent Employee
             AStaff.PermanentEmployee = chkPermanentEmployee.Checked;
             //capture the Date of Birth
             AStaff.DateofBirth = Convert.ToDateTime(this.Calendar.SelectedDate);
-            //store the StaffID in the session object
-            Session["AStaff"] = AStaff;
-            //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            //create a new instance of the class collection
+            clsStaffCollection StaffList = new clsStaffCollection();
 
+            //if this is a new record i. e. StaffID = -1 then add the data
+            if (staffID == -1)
+            {
+                //set the ThisStaff property
+                StaffList.ThisStaff = AStaff;
+                //add the new record
+                StaffList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StaffList.ThisStaff.Find(staffID);
+                //set the ThisStaff property
+                StaffList.ThisStaff = AStaff;
+                //update the record
+                StaffList.Update();
+
+            }
+            //redirect back to the list page
+            Response.Redirect("StaffList.aspx");
+            
         }
+
         else
         {
             //display the error message
             lblError.Text = Error;
         }    
+           
+            
+            
+            
+            
+        
         
 
         
