@@ -13,8 +13,8 @@
         <asp:ListBox ID="lstOrderList" runat="server" Height="373px" Width="653px"></asp:ListBox>
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="Button1_Click" Text="Add" />
-            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
-            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 84px; top: 426px; position: absolute" Text="Delete" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 168px; top: 425px; position: absolute" Text="Delete" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" style="position: absolute; top: 425px; left: 82px;"/>
         </p>
         <p>
             &nbsp;</p>
@@ -24,7 +24,7 @@
         </p>
         <p>
             <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" Text="Apply Filter" />
-            <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" Text="Clear Filter" />
+            <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" Text="Clear Filter" style =" position: absolute; top: 553px; left: 170px;"/>
         </p>
         <p>
             &nbsp;</p>
