@@ -49,8 +49,6 @@
     <Compile Include="clsInventoryManagement.cs" />
     <Compile Include="clsOrderCollection.cs" />
     <Compile Include="clsShipping.cs" />
-<<<<<<
-
     <Compile Include="clsShippingCollection.cs" />
     <Compile Include="clsShippingUser.cs" />
     <Compile Include="clsStaff.cs" />
