@@ -92,9 +92,9 @@ namespace Testing2
             string Password = "evPassword123";
             //check user id property
             Found = AnUser.FindUser(UserName, Password);
-            if (AnUser.UserName != UserName &&  AnUser.Password != Password)
+            if (AnUser.UserName != UserName && AnUser.Password != Password)
             {
-                OK = false; 
+                OK = false;
             }
             //test to see that the two values are the same
             Assert.IsTrue(OK);

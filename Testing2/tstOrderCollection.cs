@@ -42,7 +42,7 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AllOrder.OrderList, TestList);
         }
-       
+
         public void ThisOrderPropertyOK()
         {
             //create an instance of the class we want to create
@@ -88,7 +88,7 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AllOrder.Count, TestList.Count);
         }
-   
+
         [TestMethod]
         public void AddMethodOK()
         {
@@ -139,7 +139,7 @@ namespace Testing2
             //add the record
             PrimaryKey = AllOrder.Add();
             //set the primary key of the test data
-            TestItem.orderId= PrimaryKey;
+            TestItem.orderId = PrimaryKey;
             //modify the test record
             TestItem.orderId = 99;
             TestItem.totalItems = 6;
@@ -149,7 +149,7 @@ namespace Testing2
             TestItem.isAGift = true;
             TestItem.itemCodes = "722-223-556";
             //set the record based on the new test data
-            AllOrder.ThisOrder= TestItem;
+            AllOrder.ThisOrder = TestItem;
             //update the record
             AllOrder.Update();
             //find the record
@@ -175,7 +175,7 @@ namespace Testing2
             TestItem.isAGift = true;
             TestItem.itemCodes = "322-861-995";
             //set ThisOrder to the test data
-            AllOrder.ThisOrder= TestItem;
+            AllOrder.ThisOrder = TestItem;
             //add the record
             PrimaryKey = AllOrder.Add();
             //set the primary key of the test data
@@ -187,13 +187,13 @@ namespace Testing2
             //now find the record
             Boolean Found = AllOrder.ThisOrder.Find(PrimaryKey);
             //test to see that the record was not found
-            Assert.IsFalse( Found );
+            Assert.IsFalse(Found);
         }
         [TestMethod]
         public void ReportByItemCodesMethodOK()
         {
             //create an instance of the class containing unfiltered results
-            clsOrderCollection AllOrder= new clsOrderCollection();
+            clsOrderCollection AllOrder = new clsOrderCollection();
             //create an instance of the filtered data
             clsOrderCollection FilteredOrder = new clsOrderCollection();
             //apply a blank string (should return all record)
@@ -205,11 +205,11 @@ namespace Testing2
         public void ReportByItemCodesNoneFound()
         {
             //create an instance of the class we want to create
-            clsOrderCollection FilteredOrder= new clsOrderCollection();
+            clsOrderCollection FilteredOrder = new clsOrderCollection();
             //apply a itemcodes that dosent exist
             FilteredOrder.ReportByItemCodes("xxx-xxx");
             //test to see that there are no record
-            Assert.AreEqual(0, FilteredOrder.Count );
+            Assert.AreEqual(0, FilteredOrder.Count);
         }
         [TestMethod]
         public void ReportByItemCodesDataFound()
