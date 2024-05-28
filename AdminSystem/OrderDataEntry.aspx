@@ -41,7 +41,7 @@
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 15px; top: 731px; position: absolute"></asp:Label>
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 636px; top: 645px; position: absolute" Text="Cancel" />
             <asp:TextBox ID="txtItemCodes" runat="server" OnTextChanged="TextBox4_TextChanged" style="z-index: 1; left: 133px; top: 652px; position: absolute; margin-bottom: 6px"></asp:TextBox>
-            <asp:Calendar ID="Calendar1" runat="server" style="z-index: 1; left: 133px; top: 374px; position: absolute; height: 188px; width: 259px"></asp:Calendar>
+            <asp:Calendar ID="corderDate" runat="server" style="z-index: 1; left: 133px; top: 374px; position: absolute; height: 188px; width: 259px" OnSelectionChanged="orderDate_SelectionChanged"></asp:Calendar>
             <asp:Label ID="lblItemCodes" runat="server" style="z-index: 1; left: 45px; top: 654px; position: absolute; height: 19px" Text="Item Codes"></asp:Label>
             <asp:Label ID="lblOrderDate" runat="server" height="19px" style="z-index: 1; left: 45px; top: 456px; position: absolute; width: 71px; margin-bottom: 0px" Text="Order Date"></asp:Label>
             <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 755px; top: 642px; position: absolute" Text="OK" />

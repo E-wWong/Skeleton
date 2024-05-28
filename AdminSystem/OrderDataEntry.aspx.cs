@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,7 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    
+    Int32 orderId;
     protected void TextBox5_TextChanged(object sender, EventArgs e)
     {
 
@@ -55,7 +56,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the address to be processed
+        orderId = Convert.ToInt32(Session["orderId"]);
+        if (IsPostBack ==false)
+        {
+            //if this is not a new record
+            if (orderId !=-1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -63,17 +74,39 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the house no
-        AnOrder.orderId = Convert.ToInt32(txtorderId.Text);
-        AnOrder.totalItems = Convert.ToInt32(txtTotalItems.Text);
-        AnOrder.totalPrice = Convert.ToDouble(txtTotalPrice.Text);
-        AnOrder.address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
-        AnOrder.orderDate = Convert.ToDateTime(DateTime.Now );
-        AnOrder.isAGift = chkYes.Checked;
-        AnOrder.itemCodes = txtItemCodes.Text;
-        //store the address in the session object
-        Session ["AnOrder"] = AnOrder;
-        //navigate to the view page
-        Response.Redirect("OrderViewer.aspx");
+        string orderId = txtorderId.Text;
+        string totalItems = txtTotalItems.Text;
+        string totalPrice = txtTotalPrice.Text;
+        string address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
+        string orderDate = corderDate.SelectedDate.ToString();
+        string isAGift = chkYes.Text;
+        string itemCodes = txtItemCodes.Text;
+        string Error = "";
+        //validate the data
+        Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
+        if (Error == "") 
+        {
+            //capture the order no
+            AnOrder.totalItems = Convert.ToInt32(txtTotalItems.Text);
+            AnOrder.totalPrice = Convert.ToDouble(txtTotalPrice.Text);
+            AnOrder.address = txtAddressLine1.Text + "-" + txtAddressLine2.Text + "-" + txtTownCity.Text + "-" + txtCounty.Text + "-" + txtPostcode.Text;
+            AnOrder.orderDate = Convert.ToDateTime(corderDate.SelectedDate);
+            AnOrder.itemCodes = txtItemCodes.Text;
+            AnOrder.isAGift = chkYes.Checked;
+            clsOrderCollection OrderList = new clsOrderCollection();
+            //set the ThisOrder property
+            OrderList.ThisOrder = AnOrder;
+            OrderList.Add();
+            //redirect back to the list page
+            Response.Redirect("OrderViewer.aspx");
+           
+        }
+        else
+        {
+            //display the errror message 
+            lblError.Text = Error;
+        }
+      
     }
 
     protected void Button1_Click1(object sender, EventArgs e)
@@ -95,7 +128,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtTotalItems.Text = AnOrder.totalItems.ToString();
             txtTotalPrice.Text = AnOrder.totalPrice.ToString();
             txtTotalItems.Text = AnOrder.totalItems.ToString();
-            Calendar1.SelectedDate = AnOrder.orderDate;
+            corderDate.SelectedDate = AnOrder.orderDate;
             chkYes.Checked = AnOrder.isAGift;
             txtItemCodes.Text = AnOrder.itemCodes;
 
@@ -110,33 +143,41 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 hIndex = address.IndexOf("-");
                 totalAddress[aIndex] = address.Substring(0, hIndex);
 
-                address = address.Substring(hIndex + 2);
+                address = address.Substring(hIndex + 1);
                 aIndex ++;
 
             }
             totalAddress[aIndex] = address.Substring(0);
 
-            if (totalAddress[3] != "")
-            {
-                txtAddressLine1.Text = totalAddress[0];
-                txtAddressLine2.Text = ("");
-                txtTownCity.Text = totalAddress[1];
-                txtCounty.Text = totalAddress[2];
-                txtPostcode.Text = totalAddress[3];
-            }
-            else
-            {
+            
                 txtAddressLine1.Text = totalAddress[0];
                 txtAddressLine2.Text = totalAddress[1];
                 txtTownCity.Text = totalAddress[2];
                 txtCounty.Text = totalAddress[3];
                 txtPostcode.Text = totalAddress[4];
-
-            }
-
-
-
+     
         }
+
+    }
+
+    protected void orderDate_SelectionChanged(object sender, EventArgs e)
+    {
+
+    }
+    void DisplayOrder()
+    {
+        //create an instance of the address book
+        clsOrderCollection Order = new clsOrderCollection();
+        //find the record to update
+        Order.ThisOrder.Find(orderId);
+        //display the data for the record
+        txtorderId.Text = Order.ThisOrder.orderId.ToString();
+        txtTotalItems.Text = Order.ThisOrder.totalItems.ToString();
+        txtTotalPrice.Text = Order.ThisOrder.totalPrice.ToString();
+        txtTotalItems.Text = Order.ThisOrder.totalItems.ToString();
+        corderDate.SelectedDate = Order.ThisOrder.orderDate;
+        chkYes.Checked = Order.ThisOrder.isAGift;
+        txtItemCodes.Text = Order.ThisOrder.itemCodes;
 
     }
 }

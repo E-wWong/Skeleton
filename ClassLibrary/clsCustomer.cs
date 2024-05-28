@@ -37,39 +37,12 @@ namespace ClassLibrary
 
         //************************************************************************************************************
 
-        public string Valid(string customerID, string name, string email, string mobileNum, string password, string accountCreationDate, string returningCustomer)
+        public string Valid(string name, string email, string mobileNum, string password, string accountCreationDate, string returningCustomer)
         {
             //create a string variable to store the error
             String Error = "";
             //create a temporary variable to store date values
             DateTime DateTemp;
-
-            //************************************************************************************************************
-
-            //if customerID is left blank
-            if (customerID.Length == 0)
-            {
-                //record the error
-                Error = Error + "customerID cannot be left blank : ";
-            }
-
-            //only run if customerID is not blank
-            if (customerID.Length != 0)
-            {
-                //if customerID is less than 0
-                if (Int64.Parse(customerID) < 1)
-                {
-                    //record the error
-                    Error = Error + "customerID cannot be less than 1 : ";
-                }
-
-                //if customerID is greater than 2,000,000,000
-                if (Int64.Parse(customerID) > 2000000000)
-                {
-                    //record the error
-                    Error = Error + "customerID cannot be greater than 2,000,000,000 : ";
-                }
-            }
 
             //************************************************************************************************************
 

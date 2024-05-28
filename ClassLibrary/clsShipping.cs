@@ -145,30 +145,10 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string shippingID, string address, string deliveryType, string parcelSize, string deliveryDate, string orderID)
+        public string Valid(string address, string deliveryType, string parcelSize, string deliveryDate, string orderID)
         {
             //create a string variable to store the error
             String Error = "";
-
-            //******  SHIPPING ID ***********************************************************************************************************************************************************************************************
-
-            if (shippingID.Length == 0)
-            {
-                //record the error
-                Error = Error + "Shipping ID cannot be left blank : ";
-            }
-
-            else if (Int64.Parse(shippingID) <= 0)
-            {
-                //record the error
-                Error = Error + "The shipping ID cannot be less than one : ";
-            }
-
-            else if (Int64.Parse(shippingID)> 2000000000)
-            {
-                //record the error
-                Error = Error + "The shipping ID cannot exceed 2000000000 : ";
-            } 
 
             //****** ADDRESS ****************************************************************************************************************************************************************************************************
             

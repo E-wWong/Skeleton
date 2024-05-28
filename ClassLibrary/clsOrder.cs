@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Mail;
 
 namespace ClassLibrary
@@ -151,10 +152,64 @@ namespace ClassLibrary
                 //return false indicating there is a problem
                 return false;
             }
-  
         }
-    }   
+        public string Valid(string totalItems, string totalPrice, string address, string orderDate,string itemCodes)
+        {
+            String Error = "";
+            if (totalItems.Length < 1)
+            {
+                Error = Error + "Must select quantity to continue! ";
+            }
+            if (totalItems.Length  > 5)
+            {
+                //record the error
+                Error = Error + "Please lower items in order to continue";
+            }
+
+            if (totalPrice.Length <= 1)
+            {
+                Error = Error + "This area may not be blank : ";
+            }
+            if (totalPrice.Length > 20)
+            {
+                //record the error
+                Error = Error + "Total Items may not be less than 6 characters";
+            }
+
+            if (address.Length < 20)
+            {
+                Error = Error + "This area may not be blank : ";
+            }
+            if (address.Length >= 500)
+            {
+                //record the error
+                Error = Error + "Total Items may not be less than 6 characters";
+            }
+
+            if (itemCodes.Length != 11)
+            {
+                Error = Error + "Item Code should be 11 characters";
+            }
+
+
+            DateTime DateTemp;
+            //copy the dateAdded value to the DateTemp variable
+            DateTemp = Convert.ToDateTime(orderDate);
+            if (DateTemp < Convert.ToDateTime("01/01/24"))
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+            //check to see if the date is greater than today's date
+            if (DateTemp > DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the future : ";
+
+            }
+            return Error;
+        }
+    }
 }
-   
 
     

@@ -59,7 +59,7 @@
             <asp:Calendar ID="cDeliveryDate" runat="server" style="z-index: 1; left: 158px; top: 375px; position: absolute; height: 188px; width: 259px"></asp:Calendar>
         </p>
         <p>
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 18px; top: 684px; position: absolute; right: 583px"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 320px; top: 684px; position: absolute; right: 184px"></asp:Label>
         </p>
         <p>
             &nbsp;</p>
@@ -70,10 +70,10 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 109px; top: 734px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 115px; top: 681px; position: absolute" Text="Cancel" />
         </p>
         <p>
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 42px; top: 734px; position: absolute" Text="OK" />
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 40px; top: 681px; position: absolute" Text="OK" />
         </p>
     </form>
 </body>

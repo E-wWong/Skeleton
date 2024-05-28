@@ -42,11 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsCustomer.cs" />
+    <Compile Include="clsCustomerCollection.cs" />
+    <Compile Include="clsCustomerUser.cs" />
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsInventoryManagement.cs" />
+    <Compile Include="clsOrderCollection.cs" />
     <Compile Include="clsShipping.cs" />
+<<<<<<
+
     <Compile Include="clsShippingCollection.cs" />
+    <Compile Include="clsShippingUser.cs" />
     <Compile Include="clsStaff.cs" />
     <Compile Include="clsStaffCollection.cs" />
     <Compile Include="clsStaffUser.cs" />

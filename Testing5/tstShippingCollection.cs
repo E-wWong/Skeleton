@@ -92,5 +92,163 @@ namespace Testing5
             //test to see that the two equal values are the same
             Assert.AreEqual(AllShipments.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsShippingCollection allShipments = new clsShippingCollection();
+            //create the item of test data
+            clsShipping TestItem = new clsShipping();
+            //variable to store the primary key
+            Int32 primaryKey = 0;
+            //set ts properties
+            TestItem.shippingID = 6;
+            TestItem.address = "134 Church Way- -Bradford-Yorkshire-BD6 6JR";
+            TestItem.deliveryType = "S e c o n d c l";
+            TestItem.parcelSize = "Large";
+            TestItem.deliveryDate = Convert.ToDateTime("24/05/2024");
+            TestItem.orderID = 14;
+            TestItem.isDispatched = true;
+            //set ThisShipment to the test data
+            allShipments.ThisShipment = TestItem;
+            //add the record
+            primaryKey = allShipments.Add();
+            //set the primary key of the test data
+            TestItem.shippingID = primaryKey;
+            //find the record
+            allShipments.ThisShipment.Find(primaryKey);
+            //test to se that the two values are the same
+            Assert.AreEqual(allShipments.ThisShipment, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an intstance of a class we want to create
+            clsShippingCollection allShipments = new clsShippingCollection();
+            //create the item of test data
+            clsShipping TestItem = new clsShipping();
+            //variale to store the primary key
+            Int32 primaryKey = 0;
+            //set the properties 
+            TestItem.shippingID = 6;
+            TestItem.address = "134 Church Way- -Bradford-Yorkshire-BD6 6JR";
+            TestItem.deliveryType = "S e c o n d c l";
+            TestItem.parcelSize = "Large";
+            TestItem.deliveryDate = Convert.ToDateTime("24/05/2024");
+            TestItem.orderID = 14;
+            TestItem.isDispatched = true;
+            //set ThisShipping to the test data
+            allShipments.ThisShipment = TestItem;
+            //add the record
+            primaryKey = allShipments.Add();
+            ///set the primary key of the test data 
+            TestItem.shippingID = primaryKey;
+            //modify the test record
+            TestItem.shippingID = 6;
+            TestItem.address = "134 Different Street- -Bradford-Yorkshire-BD6 6JR";
+            TestItem.deliveryType = "Tracked";
+            TestItem.parcelSize = "Medium";
+            TestItem.deliveryDate = Convert.ToDateTime("24/05/2024");
+            TestItem.orderID = 14;
+            TestItem.isDispatched = false;
+            //set the record based on the new test data
+            allShipments.ThisShipment = TestItem;
+            //update the record
+            allShipments.Update();
+            //find the record
+            allShipments.ThisShipment.Find(primaryKey);
+            //test to see if ThisShipment matches the test data
+            Assert.AreEqual(allShipments.ThisShipment, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsShippingCollection allShipments = new clsShippingCollection();
+            //create the item of test data
+            clsShipping TestItem = new clsShipping();
+            //variable to store the primary key
+            Int32 primaryKey = 0;
+            //set it's properties
+            TestItem.shippingID = 6;
+            TestItem.address = "134 Church Way- -Bradford-Yorkshire-BD6 6JR";
+            TestItem.deliveryType = "S e c o n d c l";
+            TestItem.parcelSize = "Large";
+            TestItem.deliveryDate = Convert.ToDateTime("24/05/2024");
+            TestItem.orderID = 14;
+            TestItem.isDispatched = true;
+            //set ThisShipping to the test data 
+            allShipments.ThisShipment = TestItem;
+            //add the record
+            primaryKey = allShipments.Add();
+            //set the primary key of the test data
+            TestItem.shippingID = primaryKey;
+            //find the record
+            allShipments.ThisShipment.Find(primaryKey);
+            //delete the record
+            allShipments.Delete();
+            //now find the record
+            Boolean Found = allShipments.ThisShipment.Find(primaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByAddressMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsShippingCollection AllShipments = new clsShippingCollection();
+            //create an instance of the filtered data
+            clsShippingCollection FilteredShipments = new clsShippingCollection();
+            //apply a blank string (should return all records)
+            FilteredShipments.ReportByAddress("");
+            //test o see that the two values are the sam
+            Assert.AreEqual(AllShipments.Count, FilteredShipments.Count);
+        }
+
+        [TestMethod]
+        public void ReportByAddressNoneFound()
+        {
+            //create an instance of the class we want t create
+            clsShippingCollection FilteredShipments = new clsShippingCollection();
+            //apply a shippingID that doen't exist
+            FilteredShipments.ReportByAddress("xxxxxxxxxxxx- -xxxx- -xxxxxxxxxxxxx");
+            //test to see that there are no records
+            Assert.AreEqual(2, FilteredShipments.Count);
+        }
+
+        [TestMethod]
+        public void ReportByAddressTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsShippingCollection FilteredShipments = new clsShippingCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply an address that doesn't exist
+            FilteredShipments.ReportByAddress("xxxxxxxxxxxx- -xxxx- -xxxxxxxxxxxxx");
+            //check that the correct number of records are dound
+            if (FilteredShipments.Count == 2)
+            {
+                //check to see that the first record is 25
+                if (FilteredShipments.ShipmentList[0].shippingID != 31)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 26
+                if (FilteredShipments.ShipmentList[1].shippingID != 32) 
+                { 
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 }
