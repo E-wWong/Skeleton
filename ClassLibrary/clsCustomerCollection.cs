@@ -17,7 +17,7 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
 
-        //************************************************************************************************************
+        //***************************************************************************************************************
 
         //private data member for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
