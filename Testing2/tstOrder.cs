@@ -8,7 +8,7 @@ namespace Testing2
 {
     [TestClass]
     public class tstOrder
-    {
+    {   //28/-5/2024 12:10
         //good test data
         //create some test data to pass the method
         string totalItems = "3";
@@ -97,12 +97,7 @@ namespace Testing2
             //test to see that the values are the same
             Assert.AreEqual(AnOrder.isAGift, TestData);
         }
-<<<<<<
         public void itemCodesOK()
-
-        [TestMethod]
-        public void itemCodes()
->>>>>>
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -281,7 +276,7 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnOrder.Valid(totalItems,totalPrice,address,orderDate,itemCodes);
+            Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreEqual(Error, Error, "");
         }
@@ -323,7 +318,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             itemCodes = itemCodes.PadRight(2, 'a'); //this should be ok
-                                                     //invoke the method
+                                                    //invoke the method
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -337,7 +332,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             totalItems = totalItems.PadRight(4, 'a'); //this should be ok
-                                                       //invoke the method
+                                                      //invoke the method
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -382,7 +377,7 @@ namespace Testing2
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
-       
+
         }
         [TestMethod]
         public void TotalItemsExtremeMax()
@@ -397,8 +392,8 @@ namespace Testing2
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
-        
-         }
+
+        }
         [TestMethod]
         public void TotalPriceMinLessOne()
         {
@@ -506,9 +501,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            
+
             totalPrice = totalPrice.PadRight(50, 'a');//this shuld fail
-                                                       //invoke the method
+                                                      //invoke the method
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -625,7 +620,7 @@ namespace Testing2
             //create some test data to pass to the method
             string address = "";
             address = address.PadRight(500, 'a');//this shuld fail
-                                                    //invoke the method
+                                                 //invoke the method
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -670,7 +665,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             itemCodes = itemCodes.PadRight(12, 'a');
-                                     //invoke the method
+            //invoke the method
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -712,7 +707,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string itemCodes = ""; //this should be ok
-                                      //invoke the method
+                                   //invoke the method
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -726,7 +721,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string itemCodes = ""; //this should be ok
-                                      //invoke the method
+                                   //invoke the method
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -845,10 +840,10 @@ namespace Testing2
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
-            
-            }
+
         }
     }
-    
- 
+}
+
+
 

@@ -21,7 +21,7 @@ namespace ClassLibrary
                 mUserID = value;
             }
         }
-        
+
         public string UserName
         {
             get
@@ -37,9 +37,9 @@ namespace ClassLibrary
         public string Password
         {
             get
-            { 
+            {
                 return mPassword;
-            
+
             }
             set
             {
@@ -85,7 +85,7 @@ namespace ClassLibrary
                 return false;
             }
         }
-       
+
     }
 
 }

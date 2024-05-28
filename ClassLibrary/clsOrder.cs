@@ -153,14 +153,14 @@ namespace ClassLibrary
                 return false;
             }
         }
-        public string Valid(string totalItems, string totalPrice, string address, string orderDate,string itemCodes)
+        public string Valid(string totalItems, string totalPrice, string address, string orderDate, string itemCodes)
         {
             String Error = "";
             if (totalItems.Length < 1)
             {
                 Error = Error + "Must select quantity to continue! ";
             }
-            if (totalItems.Length  > 5)
+            if (totalItems.Length > 5)
             {
                 //record the error
                 Error = Error + "Please lower items in order to continue";
@@ -212,4 +212,4 @@ namespace ClassLibrary
     }
 }
 
-    
+
