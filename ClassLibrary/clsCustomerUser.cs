@@ -49,7 +49,7 @@ namespace ClassLibrary
                 mUserName = value;
             }
         }
-
+        //
         public string Department
         {
             get
