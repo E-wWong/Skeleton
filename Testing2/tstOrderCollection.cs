@@ -219,17 +219,17 @@ namespace Testing2
             //variable to store the outcome
             Boolean OK = true;
             //apply a item code that dosent exist
-            FilteredOrder.ReportByItemCodes("yyy-yyy");
+            FilteredOrder.ReportByItemCodes("yyy-yyy-yyy");
             //check that the correct number of records are found
             if (FilteredOrder.Count == 2)
             {
                 //check to see hat the first record is 25
-                if (FilteredOrder.OrderList[0].orderId != 25)
+                if (FilteredOrder.OrderList[0].orderId != 26)
                 {
                     OK = false;
                 }
                 //check to see that the first record is 26
-                if (FilteredOrder.OrderList[1].orderId != 26)
+                if (FilteredOrder.OrderList[1].orderId != 32)
                 {
                     OK = false;
                 }
