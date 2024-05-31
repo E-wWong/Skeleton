@@ -109,7 +109,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtMobileNum.Text = ACustomer.mobileNum;
             txtPassword.Text = ACustomer.password;
             clndrAccountCreationDate.SelectedDate = ACustomer.accountCreationDate;
+            clndrAccountCreationDate.VisibleDate = ACustomer.accountCreationDate;
             chkReturningCustomer.Checked = ACustomer.returningCustomer;
+        }
+        //if not found
+        else
+        {
+            //clear all fields and display error message
+            txtName.Text = "";
+            txtEmail.Text = "";
+            txtMobileNum.Text = "";
+            txtPassword.Text = "";
+            clndrAccountCreationDate.SelectedDate = ACustomer.accountCreationDate;
+            lblError.Text = "record not found";
         }
     }
 
@@ -127,5 +139,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtPassword.Text = Customer.ThisCustomer.password;
         clndrAccountCreationDate.SelectedDate = Customer.ThisCustomer.accountCreationDate;
         chkReturningCustomer.Checked = Customer.ThisCustomer.returningCustomer;
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer class
+        clsCustomer ACustomer = new clsCustomer();
+        //clear all fields
+        txtCustomerID.Text = "";
+        txtName.Text = "";
+        txtEmail.Text = "";
+        txtMobileNum.Text = "";
+        txtPassword.Text = "";
+        clndrAccountCreationDate.SelectedDate = ACustomer.accountCreationDate;
+        chkReturningCustomer.Checked = false;
+        lblError.Text = "";
     }
 }
