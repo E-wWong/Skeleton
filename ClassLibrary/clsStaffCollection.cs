@@ -9,41 +9,13 @@ namespace ClassLibrary
         public clsStaffCollection()
         {
 
-
-            /*
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-           */
             //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure 
             DB.Execute("sproc_tblStaffManagement_SelectAll");
             //populate the array list with the data table
             PopulateArray(DB);
-        /*
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank Staff
-                clsStaff AStaff = new clsStaff();
-                //read in the fields for the current record
-                AStaff.PermanentEmployee = Convert.ToBoolean(DB.DataTable.Rows[Index]["PermanentEmployee"]);
-                AStaff.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffID"]);
-                AStaff.DateofBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateofBirth"]);
-                AStaff.name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
-                AStaff.email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
-                AStaff.role = Convert.ToString(DB.DataTable.Rows[Index]["Role"]);
-                AStaff.password = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
-                //add the record to the private data member
-                mStaffList.Add(AStaff);
-                //point at the next record
-                Index++;
-            }
-        */
+
 
         }
         //private data member for the list
