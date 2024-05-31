@@ -35,7 +35,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //store -1 into the session object to indicate this is a new record
-        Session["StaffID"] = -1;
+        Session["StaffID"] = 0;
         //redirect to the data entry page
         Response.Redirect("StaffDataEntry.aspx");
     }
@@ -68,7 +68,7 @@ public partial class _1_List : System.Web.UI.Page
         //variable to store the primary key value of the record to be deleted
         Int32 StaffID;
         //if a record has been selected from the list
-        if(lstStaffList.SelectedIndex != -1)
+        if(lstStaffList.SelectedIndex != 0)
         {
             //get the primary key value of the record delete
             StaffID = Convert.ToInt32(lstStaffList.SelectedValue);
@@ -100,7 +100,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstStaffList.DataValueField = "StaffID";
         //set the name of the field to display
-        lstStaffList.DataTextField = "Role";
+        lstStaffList.DataTextField = "Name";
         //bind the data to the list
         lstStaffList.DataBind();
 
@@ -119,8 +119,9 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key 
         lstStaffList.DataValueField = "StaffID";
         //set the name of the field to display
-        lstStaffList.DataTextField = "Role";
+        lstStaffList.DataTextField = "Name";
         //bind the data to the list
         lstStaffList.DataBind() ;
+        lblError.Text = "";
     }
 }

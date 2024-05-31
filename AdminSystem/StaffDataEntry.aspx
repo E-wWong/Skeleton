@@ -29,7 +29,7 @@
             <asp:Button ID="btnFind" runat="server" Style="z-index: 1; left: 295px; top: 47px; position: absolute; margin-bottom: 0px" Text="Find" Width="60px" OnClick="btnFind_Click1" />
         </p>
         <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 18px; top: 573px; position: absolute" Text="Ok" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 69px; top: 572px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 69px; top: 572px; position: absolute; height: 26px;" Text="Cancel" OnClick="btnCancel_Click" />
         <asp:TextBox ID="txtName" runat="server" style="z-index: 1; left: 96px; top: 90px; position: absolute" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtEmail" runat="server" style="z-index: 1; left: 96px; top: 142px; position: absolute" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtRole" runat="server" style="z-index: 1; left: 96px; top: 189px; position: absolute" width="128px"></asp:TextBox>

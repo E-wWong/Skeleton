@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (IsPostBack == false)
         {
             //if this is not a new record
-            if (staffID != -1)
+            if (staffID != 0)
             {
                 //display the current data for the record
                 DisplayStaff();
@@ -88,7 +88,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             clsStaffCollection StaffList = new clsStaffCollection();
 
             //if this is a new record i. e. StaffID = -1 then add the data
-            if (staffID == -1)
+            if (staffID == 0)
             {
                 //set the ThisStaff property
                 StaffList.ThisStaff = AStaff;
@@ -161,9 +161,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtRole.Text = AStaff.role;
             txtPassword.Text = AStaff.password;
             Calendar.SelectedDate = AStaff.DateofBirth;
+            Calendar.VisibleDate = AStaff.DateofBirth;
             chkPermanentEmployee.Checked = AStaff.PermanentEmployee;
-
+            lblError.Text = "";
 
         }
+        else
+        {
+            
+            txtName.Text = "";
+            txtEmail.Text = "";
+            txtRole.Text = "";
+            txtPassword.Text = "";
+            Calendar.SelectedDate = AStaff.DateofBirth;
+            chkPermanentEmployee.Checked = false;
+            lblError.Text = "Record could not be found";
+        }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        clsStaff AStaff = new clsStaff();
+        //display the values of the properties in the form
+        txtStaffID.Text = "";
+        txtName.Text = "";
+        txtEmail.Text = "";
+        txtRole.Text = "";
+        txtPassword.Text = "";
+        Calendar.SelectedDate = AStaff.DateofBirth;
+        chkPermanentEmployee.Checked = false;
+
     }
 }
