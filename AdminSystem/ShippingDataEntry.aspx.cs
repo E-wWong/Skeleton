@@ -164,7 +164,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AShipment.isDispatched = chkIsDispatched.Checked;
             //create a new instance of the shipping collection
             clsShippingCollection shippingList = new clsShippingCollection();
-            
+
             //if this is a new record i.e. shippingID = 0 the a the data
             if (shippingID == 0)
             {
@@ -277,15 +277,50 @@ public partial class _1_DataEntry : System.Web.UI.Page
             }
             else
             {
-                rblDeliveryType.SelectedIndex = -1;
+                rblParcelSize.SelectedIndex = -1;
             }
             //displaying the deliveryDate
             cDeliveryDate.SelectedDate = (AShipment.deliveryDate);
+            //displaying the right month
+            cDeliveryDate.VisibleDate = AShipment.deliveryDate;
             //displaying the orderID
             txtOrderID.Text = AShipment.orderID.ToString();
             //displaying the isDispatched
             chkIsDispatched.Checked = AShipment.isDispatched;
-        }         
-    } 
+            lblError.Text = "";
+        }
+        else
+        {
+            txtAddressLine1.Text = "";
+            txtAddressLine2.Text = "";
+            txtTownCity.Text = "";
+            txtCounty.Text = "";
+            txtPostcode.Text = "";
+            rblDeliveryType.SelectedIndex = -1;
+            rblParcelSize.SelectedIndex = -1;
+            cDeliveryDate.SelectedDate = (AShipment.deliveryDate);
+            txtOrderID.Text = "";
+            chkIsDispatched.Checked = false;
+            lblError.Text = "Record could not be found";
+        }
+    }
+
+    protected void btnCancel_Click1(object sender, EventArgs e)
+    {
+        clsShipping AShipment = new clsShipping();
+
+        txtShippingID.Text = "";
+        txtAddressLine1.Text = "";
+        txtAddressLine2.Text = "";
+        txtTownCity.Text = "";
+        txtCounty.Text = "";
+        txtPostcode.Text = "";
+        rblDeliveryType.SelectedIndex = -1;
+        rblParcelSize.SelectedIndex = -1;
+        cDeliveryDate.SelectedDate = (AShipment.deliveryDate);
+        txtOrderID.Text = "";
+        chkIsDispatched.Checked = false;
+        lblError.Text = "";
+    }
 }
 

@@ -70,7 +70,7 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 115px; top: 681px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 115px; top: 681px; position: absolute" Text="Cancel" OnClick="btnCancel_Click1" />
         </p>
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 40px; top: 681px; position: absolute" Text="OK" />

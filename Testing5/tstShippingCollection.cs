@@ -105,7 +105,7 @@ namespace Testing5
             //set ts properties
             TestItem.shippingID = 6;
             TestItem.address = "134 Church Way- -Bradford-Yorkshire-BD6 6JR";
-            TestItem.deliveryType = "S e c o n d c l";
+            TestItem.deliveryType = "Second Class";
             TestItem.parcelSize = "Large";
             TestItem.deliveryDate = Convert.ToDateTime("24/05/2024");
             TestItem.orderID = 14;
@@ -134,7 +134,7 @@ namespace Testing5
             //set the properties 
             TestItem.shippingID = 6;
             TestItem.address = "134 Church Way- -Bradford-Yorkshire-BD6 6JR";
-            TestItem.deliveryType = "S e c o n d c l";
+            TestItem.deliveryType = "Tracked";
             TestItem.parcelSize = "Large";
             TestItem.deliveryDate = Convert.ToDateTime("24/05/2024");
             TestItem.orderID = 14;
@@ -175,7 +175,7 @@ namespace Testing5
             //set it's properties
             TestItem.shippingID = 6;
             TestItem.address = "134 Church Way- -Bradford-Yorkshire-BD6 6JR";
-            TestItem.deliveryType = "S e c o n d c l";
+            TestItem.deliveryType = "Second Class";
             TestItem.parcelSize = "Large";
             TestItem.deliveryDate = Convert.ToDateTime("24/05/2024");
             TestItem.orderID = 14;
