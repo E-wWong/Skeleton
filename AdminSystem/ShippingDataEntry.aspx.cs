@@ -307,20 +307,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click1(object sender, EventArgs e)
     {
-        clsShipping AShipment = new clsShipping();
+        Response.Redirect("ShippingList.aspx");
+    }
 
-        txtShippingID.Text = "";
-        txtAddressLine1.Text = "";
-        txtAddressLine2.Text = "";
-        txtTownCity.Text = "";
-        txtCounty.Text = "";
-        txtPostcode.Text = "";
-        rblDeliveryType.SelectedIndex = -1;
-        rblParcelSize.SelectedIndex = -1;
-        cDeliveryDate.SelectedDate = (AShipment.deliveryDate);
-        txtOrderID.Text = "";
-        chkIsDispatched.Checked = false;
-        lblError.Text = "";
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
 

@@ -28,6 +28,8 @@ public partial class ShippingLogin : System.Web.UI.Page
         password = Convert.ToString(txtPassword.Text);
         //find the record
         found = aUser.FindUser(userName, password);
+        //Add a session to capure the user namee
+        Session["aUser"] = aUser;
         //if username and/or password is empty
         if (txtUserName.Text == "")
         {
@@ -53,5 +55,11 @@ public partial class ShippingLogin : System.Web.UI.Page
                 lblError.Text = "Login details incorrect. Please try again ";
             }
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
