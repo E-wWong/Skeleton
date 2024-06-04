@@ -173,7 +173,7 @@ namespace ClassLibrary
             if (totalPrice.Length > 20)
             {
                 //record the error
-                Error = Error + "Total Ptems may not be less than 20 characters";
+                Error = Error + "Total Items may not be more than 20 characters";
             }
 
             if (address.Length < 20)
