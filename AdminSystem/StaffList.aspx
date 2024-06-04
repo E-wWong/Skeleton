@@ -35,6 +35,8 @@
 &nbsp;<asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply Filter" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear Filter" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnreturn" runat="server" OnClick="btnreturn_Click" Text="Return to Main Menu" Width="189px" />
     </form>
 </body>
 </html>

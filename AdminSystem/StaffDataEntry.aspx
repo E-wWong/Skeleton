@@ -28,12 +28,48 @@
             <asp:TextBox ID="txtStaffID" runat="server" Style="z-index: 1; left: 96px; top: 42px; position: absolute" Width="128px" OnTextChanged="txtStaffID_TextChanged"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" Style="z-index: 1; left: 295px; top: 47px; position: absolute; margin-bottom: 0px" Text="Find" Width="60px" OnClick="btnFind_Click1" />
         </p>
-        <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 18px; top: 573px; position: absolute" Text="Ok" height="26px" width="60px" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 94px; top: 573px; position: absolute; height: 26px;" Text="Cancel" OnClick="btnCancel_Click" />
+        <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 18px; top: 573px; position: absolute; right: 842px;" Text="Ok" height="29px" width="60px" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 94px; top: 573px; position: absolute; height: 29px;" Text="Cancel" OnClick="btnCancel_Click" />
         <asp:TextBox ID="txtName" runat="server" style="z-index: 1; left: 96px; top: 90px; position: absolute" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtEmail" runat="server" style="z-index: 1; left: 96px; top: 142px; position: absolute" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtRole" runat="server" style="z-index: 1; left: 96px; top: 189px; position: absolute" width="128px"></asp:TextBox>
             <asp:Label ID="lblName" runat="server" style="z-index: 1; left: 23px; top: 95px; position: absolute" Text="Name" width="64px"></asp:Label>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <br />
+        <br />
+        <br />
+        <div style="margin-left: 200px">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:Button ID="btnreturn" runat="server" OnClick="btnreturn_Click" style="margin-top: 0px" Text="Return to Main Menu" Width="200px" />
+        </div>
+&nbsp;<div style="margin-left: 200px">
+        </div>
     </form>
 </body>
 </html>
