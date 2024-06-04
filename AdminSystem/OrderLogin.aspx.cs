@@ -50,4 +50,9 @@ public partial class OrderLogin : System.Web.UI.Page
             lblError.Text = "Login details are incorrect. Please try again";
         }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
+    }
 }

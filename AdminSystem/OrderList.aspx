@@ -20,7 +20,7 @@
             &nbsp;</p>
         <p>
             <asp:Label ID="Label1" runat="server" Text="Enter An Item Code"></asp:Label>
-            <asp:TextBox ID="txtFilter" runat="server" style="margin-bottom: 0px"></asp:TextBox>
+            <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 160px; top: 509px; position: absolute"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" Text="Apply Filter" />

@@ -129,6 +129,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtTotalPrice.Text = AnOrder.totalPrice.ToString();
             txtTotalItems.Text = AnOrder.totalItems.ToString();
             corderDate.SelectedDate = AnOrder.orderDate;
+            corderDate.VisibleDate = AnOrder.orderDate;
             chkYes.Checked = AnOrder.isAGift;
             txtItemCodes.Text = AnOrder.itemCodes;
 
@@ -136,6 +137,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             String[] totalAddress = new string[5];
             int aIndex = 0;
+
             
             while (address.Contains("-"))
             {
@@ -156,6 +158,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 txtCounty.Text = totalAddress[3];
                 txtPostcode.Text = totalAddress[4];
      
+        }
+        else
+        {
+            txtTotalItems.Text = "";
+            txtTotalPrice.Text = "";
+            txtTotalItems.Text = "";
+            corderDate.SelectedDate = (AnOrder.orderDate);
+            chkYes.Checked = false;
+            txtItemCodes.Text = "";
+            lblError.Text = "Record could not be found";
+
         }
 
     }
@@ -178,6 +191,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
         corderDate.SelectedDate = Order.ThisOrder.orderDate;
         chkYes.Checked = Order.ThisOrder.isAGift;
         txtItemCodes.Text = Order.ThisOrder.itemCodes;
+
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        clsOrder AnOrder = new clsOrder();
+
+        txtorderId.Text = "";
+        txtTotalItems.Text = "";
+        txtTotalPrice.Text = "";
+        txtTotalItems.Text = "";
+        corderDate.SelectedDate = (AnOrder.orderDate);
+        chkYes.Checked = false;
+        txtItemCodes.Text = "";
 
     }
 }

@@ -10,25 +10,26 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <p>
             &nbsp;</p>
         <p>
             &nbsp;</p>
         <p>
-        <asp:Label ID="Label2" runat="server" Text="UserName"></asp:Label>
-        <asp:TextBox ID="txtUserName" runat="server" ForeColor="Black" Height="22px" style="margin-bottom: 6px"></asp:TextBox>
-        <asp:Label ID="lblError" runat="server" ForeColor="#FF3300" Text="lblError"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="UserName:"></asp:Label>
+            <asp:TextBox ID="txtUserName" runat="server" style="z-index: 1; left: 90px; top: 131px; position: absolute"></asp:TextBox>
         </p>
         <p>
             &nbsp;</p>
         <p>
-            <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
-            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:Label ID="Label3" runat="server" Text="Password:"></asp:Label>
+            <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 87px; top: 201px; position: absolute" TextMode="Password"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" />
-            <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 97px; top: 242px; position: absolute" Text="Cancel" />
+        </p>
+        <p>
+            <asp:Label ID="lblError" runat="server" BorderColor="#FF3300" ForeColor="Red" style="z-index: 1; left: 279px; top: 173px; position: absolute; height: 19px; width: 94px" Text="lblError"></asp:Label>
         </p>
     </form>
 </body>
