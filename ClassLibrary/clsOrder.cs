@@ -193,6 +193,8 @@ namespace ClassLibrary
 
 
             DateTime DateTemp;
+            DateTemp = Convert.ToDateTime(orderDate);
+
             //copy the dateAdded value to the DateTemp variable
             DateTemp = Convert.ToDateTime(orderDate);
             if (DateTemp < Convert.ToDateTime("01/01/24"))
