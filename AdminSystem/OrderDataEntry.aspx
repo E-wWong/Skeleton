@@ -39,7 +39,7 @@
         <p>
             <asp:CheckBox ID="chkYes" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" style="z-index: 1; left: 133px; top: 597px; position: absolute; height: 22px" Text="Yes" />
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 15px; top: 731px; position: absolute"></asp:Label>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 636px; top: 645px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 636px; top: 645px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
             <asp:TextBox ID="txtItemCodes" runat="server" OnTextChanged="TextBox4_TextChanged" style="z-index: 1; left: 133px; top: 652px; position: absolute; margin-bottom: 6px"></asp:TextBox>
             <asp:Calendar ID="corderDate" runat="server" style="z-index: 1; left: 133px; top: 374px; position: absolute; height: 188px; width: 259px" OnSelectionChanged="orderDate_SelectionChanged"></asp:Calendar>
             <asp:Label ID="lblItemCodes" runat="server" style="z-index: 1; left: 45px; top: 654px; position: absolute; height: 19px" Text="Item Codes"></asp:Label>
