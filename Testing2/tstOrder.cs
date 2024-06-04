@@ -430,7 +430,7 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            totalPrice = totalPrice.PadRight(14, 'a'); //this should be ok
+            totalPrice = totalPrice.PadRight(3, 'a'); //this should be ok
                                                        //invoke the method
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
@@ -638,6 +638,7 @@ namespace Testing2
             //create some test data to pass the method
             string itemCodes = "";//this should trigger an error
                                   //invoke the method
+            itemCodes = itemCodes.PadRight(12, 'a');
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -657,7 +658,7 @@ namespace Testing2
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void ItemCodesPlusOne()
+        public void ItemCodesMinPlusOne()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -708,6 +709,7 @@ namespace Testing2
             //create some test data to pass to the method
             string itemCodes = ""; //this should be ok
                                    //invoke the method
+            itemCodes = itemCodes.PadRight(6, 'a');
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -722,6 +724,7 @@ namespace Testing2
             //create some test data to pass to the method
             string itemCodes = ""; //this should be ok
                                    //invoke the method
+            itemCodes = itemCodes.PadRight(12, 'a');
             Error = AnOrder.Valid(totalItems, totalPrice, address, orderDate, itemCodes);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");

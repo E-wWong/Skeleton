@@ -12,9 +12,9 @@
         </div>
         <asp:ListBox ID="lstOrderList" runat="server" Height="373px" Width="653px"></asp:ListBox>
         <p>
-            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 162px; top: 429px; position: absolute; height: 23px;" Text="Delete" />
-            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" style="position: absolute; top: 430px; left: 86px; height: 23px;"/>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click1" style="z-index: 1; left: 18px; top: 431px; position: absolute; height: 22px; right: 1555px" Text="Add" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 282px; top: 427px; position: absolute; height: 23px;" Text="Delete" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" style="position: absolute; top: 426px; left: 150px; height: 23px;"/>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click2" style="z-index: 1; left: 21px; top: 428px; position: absolute; height: 23px" Text="Add" />
         </p>
         <p>
             <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 163px; top: 507px; position: absolute"></asp:TextBox>

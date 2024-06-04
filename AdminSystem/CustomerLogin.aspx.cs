@@ -27,6 +27,8 @@ public partial class CustomerLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         //find the record
         Found = AUser.FindUser(Username, Password);
+        //ass a session to capture the username
+        Session["AUser"] = AUser;
         //if either field is empty
         if (txtUserName.Text == "")
         {
