@@ -196,15 +196,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        clsOrder AnOrder = new clsOrder();
+        //redirect  to list page
+        Response.Redirect("OrderList.aspx");
 
-        txtorderId.Text = "";
-        txtTotalItems.Text = "";
-        txtTotalPrice.Text = "";
-        txtTotalItems.Text = "";
-        corderDate.SelectedDate = (AnOrder.orderDate);
-        chkYes.Checked = false;
-        txtItemCodes.Text = "";
+    }
 
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
