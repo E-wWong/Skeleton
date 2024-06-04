@@ -181,15 +181,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        clsStaff AStaff = new clsStaff();
-        //display the values of the properties in the form
-        txtStaffID.Text = "";
-        txtName.Text = "";
-        txtEmail.Text = "";
-        txtRole.Text = "";
-        txtPassword.Text = "";
-        Calendar.SelectedDate = AStaff.DateofBirth;
-        chkPermanentEmployee.Checked = false;
 
+        Response.Redirect("StaffList.aspx");
     }
 }
