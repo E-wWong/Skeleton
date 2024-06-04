@@ -17,6 +17,13 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             displayCustomers();
         }
+
+        //create a new instance of clsCustomerUser
+        clsCustomerUser AUser = new clsCustomerUser();
+        //get data form the session object
+        AUser = (clsCustomerUser)Session["AUser"];
+        //display the username
+        Response.Write("Logged in as: " + AUser.UserName);
     }
 
     void displayCustomers()
@@ -121,4 +128,10 @@ public partial class _1_List : System.Web.UI.Page
     }
 
 
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect back to the list page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
