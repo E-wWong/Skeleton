@@ -21,6 +21,12 @@ public partial class _1_List : System.Web.UI.Page
           DisplayOrder();
 
         }
+        //create a new instance of the clsOrderUser
+        clsOrderUser AnUser = new clsOrderUser();
+        //get data from the session obkect
+        AnUser = (clsOrderUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
 
      }
     void DisplayOrder()
@@ -68,7 +74,10 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-
+        //store -1 into the session object to indicate this is a new record
+        Session["orderId"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("OrderDataEntry.aspx");
     }
 
     protected void btnDelete_Click(object sender, EventArgs e)
@@ -111,6 +120,41 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataValueField = "orderId";
         lstOrderList.DataTextField = "itemCodes";
         lstOrderList.DataBind();
+
+    }
+
+    protected void ReturnToMainMenu2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnApplyFilter_Click1(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        AnOrder.ReportByItemCodes(txtFilter.Text);
+        lstOrderList.DataSource = AnOrder.OrderList;
+        lstOrderList.DataValueField = "orderId";
+        lstOrderList.DataTextField = "itemCodes";
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClearFilter_Click1(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        AnOrder.ReportByItemCodes("");
+        txtFilter.Text = "";
+        lstOrderList.DataSource = AnOrder.OrderList;
+        lstOrderList.DataValueField = "orderId";
+        lstOrderList.DataTextField = "itemCodes";
+        lstOrderList.DataBind();
+    }
+
+    protected void btnAdd_Click1(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["orderId"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("OrderDataEntry.aspx");
 
     }
 }

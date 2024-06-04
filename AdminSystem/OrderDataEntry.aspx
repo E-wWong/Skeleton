@@ -52,7 +52,12 @@
         </p>
         <p>
             &nbsp;</p>
-        <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click1" style="z-index: 1; left: 726px; top: 508px; position: absolute" Text="Find" />
+        <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click1" style="z-index: 1; left: 694px; top: 551px; position: absolute" Text="Find" />
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; left: 850px; top: 594px; position: absolute; height: 26px" Text="Return To Main Menu" />
+        </p>
     </form>
 </body>
 </html>
