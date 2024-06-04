@@ -35,7 +35,7 @@ namespace Testing1
             TestItem.name = "test";
             TestItem.email = "testEmail@Email.com";
             TestItem.mobileNum = "07123456789";
-            TestItem.password = "password";
+            TestItem.password = "password1234";
             TestItem.accountCreationDate = DateTime.Now;
             TestItem.returningCustomer = true;
             //add the item to the test list
@@ -58,7 +58,7 @@ namespace Testing1
             TestCustomer.name = "test";
             TestCustomer.email = "testEmail@Email.com";
             TestCustomer.mobileNum = "07123456789";
-            TestCustomer.password = "password";
+            TestCustomer.password = "password1234";
             TestCustomer.accountCreationDate = DateTime.Now;
             TestCustomer.returningCustomer = true;
             //assign the data to the property
@@ -83,7 +83,7 @@ namespace Testing1
             TestItem.name = "test10";
             TestItem.email = "testEmail@Email.com";
             TestItem.mobileNum = "07123456789";
-            TestItem.password = "password";
+            TestItem.password = "password1234";
             TestItem.accountCreationDate = DateTime.Now;
             TestItem.returningCustomer = true;
             //add the item to the test list
@@ -108,7 +108,7 @@ namespace Testing1
             TestItem.name = "test10";
             TestItem.email = "testEmail@Email.com";
             TestItem.mobileNum = "07123456789";
-            TestItem.password = "password";
+            TestItem.password = "password1234";
             TestItem.accountCreationDate = DateTime.Now;
             TestItem.returningCustomer = true;
             //set ThisCustomer to the test data
@@ -137,7 +137,7 @@ namespace Testing1
             TestItem.name = "test10";
             TestItem.email = "testEmail@Email.com";
             TestItem.mobileNum = "07123456789";
-            TestItem.password = "password";
+            TestItem.password = "password1234";
             TestItem.accountCreationDate = DateTime.Now;
             TestItem.returningCustomer = true;
             //set ThisCustomer to the test data
@@ -175,7 +175,7 @@ namespace Testing1
             TestItem.name = "test10";
             TestItem.email = "testEmail@Email.com";
             TestItem.mobileNum = "07123456789";
-            TestItem.password = "password";
+            TestItem.password = "password1234";
             TestItem.accountCreationDate = DateTime.Now;
             TestItem.returningCustomer = true;
             //set ThisCustomer to the test data

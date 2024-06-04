@@ -146,4 +146,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //redirect back to the list page
         Response.Redirect("CustomerList.aspx");
     }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect back to the list page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
