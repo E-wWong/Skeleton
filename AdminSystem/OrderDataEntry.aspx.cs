@@ -98,7 +98,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             OrderList.ThisOrder = AnOrder;
             OrderList.Add();
             //redirect back to the list page
-            Response.Redirect("OrderViewer.aspx");
+            Response.Redirect("OrderList.aspx");
            
         }
         else

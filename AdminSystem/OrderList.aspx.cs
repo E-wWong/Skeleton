@@ -14,7 +14,7 @@ public partial class _1_List : System.Web.UI.Page
     {
         //if this is the first time the page is displayed
         orderId = Convert.ToInt32(Session["orderId"]);
-        if (!IsPostBack == false)
+        if (IsPostBack == false)
         {
          
             
@@ -36,9 +36,10 @@ public partial class _1_List : System.Web.UI.Page
         //set the data source to list of addresses in the collection
         lstOrderList.DataSource = Order.OrderList;
         //set the name of the primary key
-        lstOrderList.DataValueField = "OrderId";
+        lstOrderList.DataValueField = "orderId";
+        lstOrderList.DataTextField = "itemCodes";
         //set the data field to display
-        lstOrderList.DataTextField = "OrderId";
+
         lstOrderList.DataBind();
     }
 
@@ -150,6 +151,15 @@ public partial class _1_List : System.Web.UI.Page
     }
 
     protected void btnAdd_Click1(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["orderId"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("OrderDataEntry.aspx");
+
+    }
+
+    protected void btnAdd_Click2(object sender, EventArgs e)
     {
         //store -1 into the session object to indicate this is a new record
         Session["orderId"] = -1;
