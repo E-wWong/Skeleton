@@ -16,6 +16,13 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayShipments();
         }
+
+        //create a new instance of clsShippingUser
+        clsShippingUser aUser = new clsShippingUser();
+        //get data from the session object
+        aUser = (clsShippingUser)Session["aUser"];
+        //display yjr user name
+        Response.Write("Logged in as: " + aUser.UserName);
     }
 
     void DisplayShipments()
@@ -114,5 +121,10 @@ public partial class _1_List : System.Web.UI.Page
         lstShippingList.DataTextField = "address";
         //bind the data to the list
         lstShippingList.DataBind();
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

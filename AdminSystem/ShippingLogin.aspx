@@ -14,20 +14,20 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:Label ID="lblUserName" runat="server" style="z-index: 1; left: 164px; top: 213px; position: absolute" Text="UserName:"></asp:Label>
+            <asp:Label ID="lblUserName" runat="server" style="z-index: 1; left: 54px; top: 166px; position: absolute" Text="UserName:"></asp:Label>
         </p>
         <p>
-            <asp:Label ID="lblPassword" runat="server" style="z-index: 1; left: 166px; top: 279px; position: absolute" Text="Password:"></asp:Label>
+            <asp:Label ID="lblPassword" runat="server" style="z-index: 1; left: 54px; top: 213px; position: absolute" Text="Password:"></asp:Label>
         </p>
-        <asp:TextBox ID="txtUserName" runat="server" style="z-index: 1; left: 360px; top: 207px; position: absolute; width: 308px"></asp:TextBox>
-        <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 362px; top: 275px; position: absolute" TextMode="Password" width="308px"></asp:TextBox>
+        <asp:TextBox ID="txtUserName" runat="server" style="z-index: 1; left: 164px; top: 166px; position: absolute; width: 209px"></asp:TextBox>
+        <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 164px; top: 213px; position: absolute" TextMode="Password" width="209px"></asp:TextBox>
         <p>
-            <asp:Label ID="lblError" runat="server" ForeColor="#FF3300" style="z-index: 1; left: 828px; top: 247px; position: absolute"></asp:Label>
+            <asp:Label ID="lblError" runat="server" ForeColor="#FF3300" style="z-index: 1; left: 456px; top: 189px; position: absolute"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" style="z-index: 1; left: 244px; top: 387px; position: absolute" Text="Login" />
+            <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" style="z-index: 1; left: 65px; top: 278px; position: absolute; right: 765px;" Text="Login" />
         </p>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 442px; top: 388px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 161px; top: 278px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>
