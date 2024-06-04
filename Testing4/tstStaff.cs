@@ -43,7 +43,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void namePropertyOK()
+        public void NamePropertyOK()
         {
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
@@ -56,7 +56,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void emailPropertyOK()
+        public void EmailPropertyOK()
         {
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
@@ -69,7 +69,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void rolePropertyOK()
+        public void RolePropertyOK()
         {
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
@@ -82,7 +82,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void passwordPropertyOK()
+        public void PasswordPropertyOK()
         {
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
@@ -874,7 +874,8 @@ namespace Testing4
             //set the date to today's date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is less 100 and less one years
-            TestDate = TestDate.AddYears(-101);
+            TestDate = TestDate.AddYears(-100);
+            TestDate = TestDate.AddDays(-1);
             //convert the date variable to a string variable 
             string dateOfBirth = TestDate.ToString();
             //invoke the method
@@ -916,7 +917,8 @@ namespace Testing4
             //set the date to today's date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is less 100 and plus one years
-            TestDate = TestDate.AddYears(-99);
+            TestDate = TestDate.AddYears(-100);
+            TestDate = TestDate.AddDays(1);
             //convert the date variable to a string variable 
             string dateOfBirth = TestDate.ToString();
             //invoke the method
@@ -937,7 +939,8 @@ namespace Testing4
             //set the date to today's date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is 18 years less one
-            TestDate = TestDate.AddYears(-19);
+            TestDate = TestDate.AddYears(-18);
+            TestDate = TestDate.AddDays(-1);
             //convert the date variable to a string variable 
             string dateOfBirth = TestDate.ToString();
             //invoke the method
@@ -979,7 +982,7 @@ namespace Testing4
             //set the date to today's date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is anywhere between 100 and 18 years before
-            TestDate = TestDate.AddYears(-80);
+            TestDate = TestDate.AddYears(-20);
             //convert the date variable to a string variable 
             string dateOfBirth = TestDate.ToString();
             //invoke the method
@@ -1000,7 +1003,8 @@ namespace Testing4
             //set the date to today's date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is less 18 years plus one
-            TestDate = TestDate.AddYears(-17);
+            TestDate = TestDate.AddYears(-18);
+            TestDate = TestDate.AddDays(1);
             //convert the date variable to a string variable 
             string dateOfBirth = TestDate.ToString();
             //invoke the method
