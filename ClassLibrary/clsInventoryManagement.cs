@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
+
     public class clsInventoryManagement
     {
         // private data member for the item ID
@@ -141,23 +143,12 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string itemID, string itemName, string itemPrice, string quantity, string size, string lastStockDelivery, string availability)
+        public string Valid( string itemName, string itemPrice, string quantity, string size, string lastStockDelivery)
         {
             //create a string variable to store the error
             String Error = "";
 
-            //if the ItemPrice is blank
-            if (Int32.Parse(itemID) < 1)
-            {
-                //record error
-                Error = Error + "the quantity cannot be less than 1: ";
-            }
-            if (Int32.Parse(itemID) > 100)
 
-            {
-                //record the error
-                Error = Error + "The quantity cannot be more than 100";
-            }
 
             //if the ItemName is blank
             if (itemName.Length < 1)
@@ -189,7 +180,7 @@ namespace ClassLibrary
                 //record error
                 Error = Error + "the quantity cannot be less than 1: ";
             }
-            if (Int32.Parse(quantity) > 100000000)
+            if (Int32.Parse(quantity) > 10000)
 
             {
                 //record the error
