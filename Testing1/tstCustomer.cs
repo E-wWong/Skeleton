@@ -690,6 +690,36 @@ namespace Testing1
         //************************************************************************************************************
 
         [TestMethod]
+        public void MobileNumMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string MobileNum = "";
+            //invoke the method
+            Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void MobileNumMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string MobileNum = "0";
+            //invoke the method
+            Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
         public void MobileNumMaxLessOne()
         {
             //create an instance of the class we want to create
@@ -698,7 +728,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string MobileNum = "";
-            MobileNum = MobileNum.PadRight(19, 'a');
+            MobileNum = MobileNum.PadRight(19, '0');
             //invoke the method
             Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
             //test to see that the result is correct
@@ -714,7 +744,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string MobileNum = "";
-            MobileNum = MobileNum.PadRight(20, 'a');
+            MobileNum = MobileNum.PadRight(20, '0');
             //invoke the method
             Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
             //test to see that the result is correct
@@ -730,7 +760,7 @@ namespace Testing1
             String Error = "";
             //this should fail
             string MobileNum = "";
-            MobileNum = MobileNum.PadRight(21, 'a');
+            MobileNum = MobileNum.PadRight(21, '0');
             //invoke the method
             Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
             //test to see that the result is correct
@@ -746,7 +776,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string MobileNum = "";
-            MobileNum = MobileNum.PadRight(10, 'a');
+            MobileNum = MobileNum.PadRight(10, '0');
             //invoke the method
             Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
             //test to see that the result is correct
@@ -762,13 +792,13 @@ namespace Testing1
             String Error = "";
             //this should fail
             string MobileNum = "";
-            MobileNum = MobileNum.PadRight(100, 'a');
+            MobileNum = MobileNum.PadRight(100, '0');
             //invoke the method
             Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-
+        
         //************************************************************************************************************
 
         [TestMethod]
@@ -1029,7 +1059,7 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-        /*
+        
         [TestMethod]
         public void AccountCreationDateMid()
         {
@@ -1041,21 +1071,17 @@ namespace Testing1
             DateTime TestDate;
             //set the date to todays date
             TestDate = DateTime.Now.Date;
-            //create a variable to store the companys start date
-            DateTime StartDate;
-            //set the date to 01/01/2024
-            StartDate = Convert.ToDateTime("01/01/2024");
-            //change the date to whatever the date is, between today and 01/01/2024
-            //this should fail
-            TestDate = (StartDate + DateTime.Now.Date) / 2;
+            //set the date to 31/03/2024
+            //this should pass
+            TestDate = Convert.ToDateTime("31/03/2024");
             //convert the date variable to a string variable
-            string DateAdded = TestDate.ToString();
+            string AccountCreationDate = TestDate.ToString();
             //invoke the method
-            Error = ACustomer.Valid(CustomerID, Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
+            Error = ACustomer.Valid(Name, Email, MobileNum, Password, AccountCreationDate, ReturningCustomer);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
-        */
+        
         [TestMethod]
         public void AccountCreationDateExtremeMin()
         {
