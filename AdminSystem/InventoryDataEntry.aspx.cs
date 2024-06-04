@@ -10,9 +10,38 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+
+    //variable to store the primary key with page level scope
+    Int32 itemID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the inventory to be proceded
+        itemID = Convert.ToInt32(Session["AddressId"]);
+        if (IsPostBack == false)
+        {
+            //if this is the not a new record
+            if (itemID != -1)
+            {
+                //display the current data for the record
+                DisplayInventory();
+            }
+        }
+    }
 
+    void DisplayInventory()
+    {
+        //create an instance of the address book 
+        clsInventoryManagementCollection InvenotoryBook = new clsInventoryManagementCollection();
+        //find the record to update
+        InvenotoryBook.ThisInventory.Find(itemID);
+        //display the data for the record
+        txtitemID.Text = InvenotoryBook.ThisInventory.itemID.ToString();
+        txtitemName.Text = InvenotoryBook.ThisInventory.itemName.ToString();
+        txtitemPrice.Text = InvenotoryBook.ThisInventory.itemPrice.ToString();
+        txtquantity.Text = InvenotoryBook.ThisInventory.quantity.ToString();
+        txtsize.Text = InvenotoryBook.ThisInventory.size.ToString();
+        clndrStockDelivery.SelectedDate = InvenotoryBook.ThisInventory.lastStockDelivery;
+        ChkActive.Checked = InvenotoryBook.ThisInventory.availability;
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -24,8 +53,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instace of clsInventoryManagement
         clsInventoryManagement AnInventory = new clsInventoryManagement();
-        //capture the itemID    
-        string itemID = txtitemID.Text;
         //capture the itemName
         string itemName = txtitemName.Text;
         //capture the itemPrice
@@ -36,17 +63,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string size = txtsize.Text;
         //capture lastStockDelivery
         string lastStockDelivery = clndrStockDelivery.SelectWeekText;
-        //capture availability
-        string availability = ChkActive.Text;
         //variable to store any error messages
         string Error = "";
         //validate data 
-        Error = AnInventory.Valid(itemID, itemName, itemPrice, quantity, size, lastStockDelivery, availability);
+        Error = AnInventory.Valid(itemName, itemPrice, quantity, size, lastStockDelivery);
         if(Error == "")
 
     {
-        //capture ItemId
-        AnInventory.itemID = Convert.ToInt32(txtitemID.Text);
+        AnInventory.itemID = itemID;
         //capture itemName
         AnInventory.itemName = txtitemName.Text;
         //capture itemPrice
@@ -57,12 +81,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnInventory.size = txtsize.Text;
         //capture lastStockDelivery
         AnInventory.lastStockDelivery = Convert.ToDateTime(clndrStockDelivery.SelectedDate);
-        //availability
+        //create new instance of the inventory collecetion
         AnInventory.availability = ChkActive.Checked;
-        //store the item ID in the session object
-        Session["AnInventory"] = AnInventory;
-        //navigate to the view page
-        Response.Redirect("InventoryViewer.aspx");
+
+            //create a new instance of the address collection
+            clsInventoryManagementCollection InventoryList = new clsInventoryManagementCollection();
+
+        if (itemID == -1)
+            {
+                //set the thisinventory property
+                InventoryList.ThisInventory = AnInventory;
+                //add the new record
+                InventoryList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                InventoryList.ThisInventory.Find(itemID);
+                //set the thisinventory property
+                InventoryList.ThisInventory = AnInventory;
+                //update the record
+                InventoryList.Update();
+            }
+            //redirect back ti the list page
+            Response.Redirect("Inventorylist.aspx");
     }
         else
         {

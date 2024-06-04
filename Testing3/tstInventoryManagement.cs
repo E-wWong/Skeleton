@@ -8,7 +8,7 @@ namespace Testing3
     public class tstInventoryManagement
     {
 
-        string ItemID = "10";
+        string itemID = "10";
         string ItemName = "pokemon";
         string ItemPrice = "20.0000";
         string Quantity = "20";
@@ -287,133 +287,10 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnInventory.Valid (ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid (ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-
-        [TestMethod]
-
-        public void itemIDMinLessOne()
-        {
-            //create an instance of the new class
-            clsInventoryManagement AnInventory = new clsInventoryManagement();
-            //String c=variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string ItemID = "0"; //this should trigger an error
-                                   //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void itemIDMin()
-        {
-            //create an instance of the class we want to create 
-            clsInventoryManagement AnInventory = new clsInventoryManagement();
-            //string variable to store any error message 
-            String Error = "";
-            //create some test data to pass to the method
-            string ItemID = "1"; //this hsould be ok
-                                   //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void itemIDMinPlusOne()
-        {
-            //create an instance of the class we want to create 
-            clsInventoryManagement AnInventory = new clsInventoryManagement();
-            //string variable to store any error message 
-            String Error = "";
-            //create some test data to pass to the method
-            string ItemID = "2"; //this should be ok
-                                   //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void itemIDNoMaxLessOne()
-        {
-            //create an instance of the class we want to create 
-            clsInventoryManagement AnInventory = new clsInventoryManagement();
-            //string variable to store any error message 
-            String Error = "";
-            //create some test data to pass to the method
-            string ItemID = "99"; //this should be ok
-                                    //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void itemIDNoMax()
-        {
-            //create an instance of the class we want to create 
-            clsInventoryManagement AnInventory = new clsInventoryManagement();
-            //string variable to store any error message 
-            String Error = "";
-            //create some test data to pass to the method
-            string ItemID = "100"; //this should be ok
-                                        //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void itemIDNoMaxPlusOne()
-        {
-            //create an instance of the class we want to create 
-            clsInventoryManagement AnInventory = new clsInventoryManagement();
-            //string variable to store any error message 
-            String Error = "";
-            //create some test data to pass to the method
-            string ItemID = "101"; //this should fail
-                                           //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-            //test to see that the reseult is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void itemIDNoMid()
-        {
-            //create an instance of the class we want to create 
-            clsInventoryManagement AnInventory = new clsInventoryManagement();
-            //string variable to store any error message 
-            String Error = "";
-            //create some test data to pass to the method
-            string ItemID = "50"; //this should be ok
-                                      //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void itemIDEtremeMax()
-        {
-            //create an instance of the class we want to create 
-            clsInventoryManagement AnInventory = new clsInventoryManagement();
-            //string variable to store any error message 
-            String Error = "";
-            //create some test data to pass to the method 
-            string ItemID = "100000"; //this should fail
-                                           //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-
-            //test to see that the reseult is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
 
         [TestMethod]
 
@@ -426,7 +303,7 @@ namespace Testing3
             //create some test data to pass to the method
             string ItemName = ""; //this should trigger an error
                                   //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -441,7 +318,7 @@ namespace Testing3
             //create some test data to pass to the method
             string ItemName = "a"; //this hsould be ok
                                    //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -456,7 +333,7 @@ namespace Testing3
             //create some test data to pass to the method
             string ItemName = "aa"; //this should be ok
                                     //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -471,7 +348,7 @@ namespace Testing3
             //create some test data to pass to the method
             string ItemName = "aaaaa"; //this should be ok
                                        //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -486,7 +363,7 @@ namespace Testing3
             //create some test data to pass to the method
             string ItemName = "aaaaaa"; //this should be ok
                                         //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -501,7 +378,7 @@ namespace Testing3
             //create some test data to pass to the method
             string ItemName = "aaa"; //this should be ok
                                      //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -516,7 +393,7 @@ namespace Testing3
             //create some test data to pass to the method
             string ItemName = ""; //this should fail
             ItemName = ItemName.PadRight(51, 'a');                             //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the reseult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -531,7 +408,7 @@ namespace Testing3
             //create some test data to pass to the method 
             string ItemName = ""; //this should fail
             ItemName = ItemName.PadRight(500, 'a');          //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the reseult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -546,8 +423,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string ItemPrice = "0"; //this should trigger an error
-                                   //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability); ;
+                                    //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -562,7 +439,7 @@ namespace Testing3
             //create some test data to pass to the method
             string ItemPrice = "1"; //this hsould be ok
                                     //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -576,8 +453,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string ItemPrice = "2"; //this should be ok
-                                     //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+                                    //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -591,8 +468,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string ItemPrice = "9998.99"; //this should be ok
-                                        //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+                                          //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -606,8 +483,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string ItemPrice = "9999.99"; //this should be ok
-                                         //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+                                          //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -621,8 +498,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string ItemPrice = "300.00"; //this should be ok
-                                      //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+                                         //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -636,8 +513,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string ItemPrice = "10001.00"; //this should fail
-                                          //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+                                           //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the reseult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -651,8 +528,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method 
             string ItemPrice = "50000.00"; //this should fail
-                     //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+                                           //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the reseult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -668,7 +545,7 @@ namespace Testing3
             //create some test data to pass to the method
             String Size = "";
             //INVOKE THE METHOD
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -683,8 +560,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string Quantity = "0"; //this should trigger an error
-                                  //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+                                   //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -699,7 +576,7 @@ namespace Testing3
             //create some test data to pass to the method
             string Quantity = "1"; //this hsould be ok
                                    //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -713,8 +590,23 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string Quantity = "2"; //this should be ok
-                                    //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+                                   //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void quantityMid()
+        {
+            //create an instance of the class we want to create 
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method
+            string Quantity = "3"; //this should be ok
+                                   //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -727,11 +619,42 @@ namespace Testing3
             //string variable to store any error message 
             String Error = "";
             //create some test data to pass to the method
-            string Quantity = "49"; //this should be ok
-                                        //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            string Quantity = "9999"; //this should be ok
+                                    //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void quantityNoMax()
+        {
+            //create an instance of the class we want to create 
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method
+            string Quantity = "10000"; //this should be ok
+                                    //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void quantityMaxPlusOne()
+        {
+            //create an instance of the class we want to create 
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method 
+            string Quantity = "10001"; //this should fail
+                                           //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
+
+            //test to see that the reseult is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -743,9 +666,9 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method 
             string Quantity = "200000000"; //this should fail
-                  //invoke the method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
-           
+                                           //invoke the method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
+
             //test to see that the reseult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -770,7 +693,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string LastStockDelivery = TestDate.ToString();
             //invoke method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -791,7 +714,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string LastStockDelivery = TestDate.ToString();
             //invoke method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -814,7 +737,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string LastStockDelivery = TestDate.ToString();
             //invoke method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -836,9 +759,69 @@ namespace Testing3
             //convert the date variable to a string variable
             string LastStockDelivery = TestDate.ToString();
             //invoke method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void lastStockDeliveryMaxLessOne()
+        {
+            //create an instance of the new class
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //String c=variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date and add a -1 to set the date to yesterday
+            TestDate = DateTime.Now.Date.AddDays(-1);
+            //convert the date variable to a string variable
+            string LastStockDelivery = TestDate.ToString();
+            //invoke method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void lastStockDeliveryMax()
+        {
+            //create an instance of the new class
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //String c=variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date 
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string LastStockDelivery = TestDate.ToString();
+            //invoke method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void lastStockDeliveryPlusOne()
+        {
+            //create an instance of the new class
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //String c=variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date and add a + 1 to the date to set to tomorrow
+            TestDate = DateTime.Now.Date.AddDays(+1);
+            //convert the date variable to a string variable
+            string LastStockDelivery = TestDate.ToString();
+            //invoke method
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -858,7 +841,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string LastStockDelivery = TestDate.ToString();
             //invoke method
-            Error = AnInventory.Valid(ItemID, ItemName, ItemPrice, Quantity, Size, LastStockDelivery, Availability);
+            Error = AnInventory.Valid(ItemName, ItemPrice, Quantity, Size, LastStockDelivery);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }

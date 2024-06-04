@@ -45,6 +45,8 @@
     <Compile Include="clsCustomerCollection.cs" />
     <Compile Include="clsCustomerUser.cs" />
     <Compile Include="clsDataConnection.cs" />
+    <Compile Include="clsInventoryManagementCollection.cs" />
+    <Compile Include="clsInventoryManagementUser.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsInventoryManagement.cs" />
     <Compile Include="clsOrderCollection.cs" />
