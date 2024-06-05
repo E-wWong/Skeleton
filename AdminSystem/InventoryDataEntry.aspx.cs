@@ -16,11 +16,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //get the number of the inventory to be proceded
-        itemID = Convert.ToInt32(Session["AddressId"]);
+        itemID = Convert.ToInt32(Session["InventoryId"]);
         if (IsPostBack == false)
         {
             //if this is the not a new record
-            if (itemID != -1)
+            if (itemID != 0)
             {
                 //display the current data for the record
                 DisplayInventory();
@@ -70,7 +70,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if(Error == "")
 
     {
-        AnInventory.itemID = itemID;
+        AnInventory.itemID = itemID; //don't miss this bit !!!!!
         //capture itemName
         AnInventory.itemName = txtitemName.Text;
         //capture itemPrice
@@ -87,7 +87,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //create a new instance of the address collection
             clsInventoryManagementCollection InventoryList = new clsInventoryManagementCollection();
 
-        if (itemID == -1)
+        if (itemID == 0)
             {
                 //set the thisinventory property
                 InventoryList.ThisInventory = AnInventory;
@@ -118,7 +118,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        //redirect to the list page
+        Response.Redirect("InventoryList.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -140,26 +141,42 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtitemName.Text = AnInventory.itemName;
             txtitemPrice.Text = AnInventory.itemPrice.ToString();
             txtquantity.Text = AnInventory.quantity.ToString();
-            if (AnInventory.size == "Small")
+            if (AnInventory.size == "small")
             {
                 txtsize.SelectedIndex = -1;
                 txtsize.Items[0].Selected = true;
             }
-            else if (AnInventory.size == "Medium")
+            else if (AnInventory.size == "medium")
             {
                 txtsize.SelectedIndex = -1;
                 txtsize.Items[1].Selected = true;
             }
-            else if (AnInventory.size == "Large")
+            else if (AnInventory.size == "large")
             {
                 txtsize.SelectedIndex = -1;
                 txtsize.Items[2].Selected = true;
             }
             clndrStockDelivery.SelectedDate = AnInventory.lastStockDelivery;
+            clndrStockDelivery.VisibleDate = AnInventory.lastStockDelivery;
             ChkActive.Checked = AnInventory.availability;
 
         }
+        else {
+            txtitemName.Text = "";
+            txtitemPrice.Text = "";
+            txtquantity.Text = "";
+            txtsize.SelectedIndex = -1;
+            clndrStockDelivery.SelectedDate = AnInventory.lastStockDelivery;
+            ChkActive.Checked = false;
+            lblError.Text = "Record cannot be found";
+        }
 
 
+    }
+
+    protected void btnReurnToPage_Click(object sender, EventArgs e)
+    {
+        //redirect to the main page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

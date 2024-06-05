@@ -159,7 +159,7 @@ namespace ClassLibrary
             if (itemName.Length > 50)
             {
                 //record the error
-                Error = Error + "The Item Name must be greater than 50";
+                Error = Error + "The Item Name must be less than 50";
             }
 
             //if the ItemPrice is blank
@@ -184,7 +184,7 @@ namespace ClassLibrary
 
             {
                 //record the error
-                Error = Error + "The quantity cannot be more than 100,000,000";
+                Error = Error + "The quantity cannot be more than 10,000";
             }
 
             if (size == "")
@@ -199,7 +199,7 @@ namespace ClassLibrary
             //if the ItemPrice is blank
             
             //copy the dateAdded value tot he DateTemp variable
-            DateTemp = Convert.ToDateTime(lastStockDelivery);
+             DateTemp = Convert.ToDateTime(lastStockDelivery);
 
             if (DateTemp < Convert.ToDateTime("01/01/2024"))
             {

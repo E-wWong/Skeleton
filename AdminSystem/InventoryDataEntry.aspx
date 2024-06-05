@@ -32,7 +32,7 @@
         <asp:Label ID="IbllastStockDelivery" runat="server" height="19px" style="z-index: 1; left: 20px; top: 298px; position: absolute" Text="Last Stock Delivery"></asp:Label>
         <asp:Label ID="Iblavailability" runat="server" style="z-index: 1; left: 20px; top: 508px; position: absolute" Text="Availability" width="120px"></asp:Label>
         <p>
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 20px; top: 553px; position: absolute">lblError</asp:Label>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 20px; top: 553px; position: absolute"></asp:Label>
             <asp:Calendar ID="clndrStockDelivery" runat="server" style="z-index: 1; left: 155px; top: 298px; position: absolute; height: 22px; width: 259px"></asp:Calendar>
         </p>
         <p>
@@ -48,6 +48,7 @@
             <asp:ListItem>Medium</asp:ListItem>
             <asp:ListItem>Large</asp:ListItem>
         </asp:RadioButtonList>
+        <asp:Button ID="btnReurnToPage" runat="server" OnClick="btnReurnToPage_Click" style="z-index: 1; left: 352px; top: 619px; position: absolute" Text="Return To Main Menu" />
     </form>
 </body>
 </html>

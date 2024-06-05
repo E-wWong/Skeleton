@@ -16,6 +16,12 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayInventories();
         }
+        //create a new instance of clsInventoryUser
+        clsInventoryManagementUser AnUser = new clsInventoryManagementUser();
+        //get data from the session object
+        AnUser = (clsInventoryManagementUser)Session["AnUser"];
+        //display the username
+        Response.Write("Logged in as " + AnUser.UserName);
     }
 
     void DisplayInventories()
@@ -36,7 +42,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //store -1 into the session object to indicate this is a new record
-        Session["InventoryId"] = -1;
+        Session["InventoryId"] = 0;
         //redirect to the data entry page
         Response.Redirect("InventoryDataEntry.aspx");
     }
@@ -73,7 +79,7 @@ public partial class _1_List : System.Web.UI.Page
             //store the data in the session object
             Session["InventoryId"] = InventoryId;
             //redirect to the edit page
-            Response.Redirect("sproc_tblInventoryManagement_Delete");
+            Response.Redirect("InventoryConfirmDelete.aspx");
         }
         else //if no record has been selected 
         {
@@ -116,5 +122,11 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstInventoryList.DataBind();
 
+    }
+
+    protected void btnReturnToPage_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

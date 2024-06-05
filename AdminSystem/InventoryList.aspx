@@ -23,10 +23,13 @@
         <p>
             <asp:Button ID="btnAF" runat="server" OnClick="btnAF_Click" Text="Apply Filter" />
             <asp:Button ID="btnCL" runat="server" OnClick="btnCL_Click" Text="Clear Filter" />
+            <asp:Button ID="btnReturnToPage" runat="server" OnClick="btnReturnToPage_Click" style="z-index: 1; left: 232px; top: 396px; position: absolute" Text="Return To Main Page" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
