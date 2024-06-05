@@ -28,6 +28,8 @@ public partial class InventoryBookLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         //find the record 
         Found = AnUser.FindUser(UserName, Password);
+        //add a session to find a username
+        Session["AnUser"] = AnUser;
         //if the username and/or password is empty
         if (txtUserName.Text == "")
         {
@@ -50,5 +52,11 @@ public partial class InventoryBookLogin : System.Web.UI.Page
             //record the error
             lblError.Text = "Login details are incorrect. Please try again ";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

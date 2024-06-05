@@ -247,7 +247,7 @@ namespace Testing3
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.lastStockDelivery != Convert.ToDateTime("10/01/2023")) 
+            if (AnInventory.lastStockDelivery != Convert.ToDateTime("10/03/2024")) 
             {
                 OK = false;
             }
