@@ -197,13 +197,15 @@ namespace ClassLibrary
             //create a temporary value to store the date values
             DateTime DateTemp;
             //if the ItemPrice is blank
-            
+
             //copy the dateAdded value tot he DateTemp variable
-             DateTemp = Convert.ToDateTime(lastStockDelivery);
+            DateTemp = Convert.ToDateTime(lastStockDelivery);
 
             if (DateTemp < Convert.ToDateTime("01/01/2024"))
             {
-                //record the error
+                //record the errorvalid DateTime.'valid DateTime.'
+
+
                 Error = Error + "The date cannot be in the past";
             }
             //check to see if the date is less than today's date

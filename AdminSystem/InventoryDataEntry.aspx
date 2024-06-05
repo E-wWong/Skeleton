@@ -44,9 +44,9 @@
             <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="z-index: 1; left: 155px; top: 620px; position: absolute" Text="Cancel" />
         </p>
         <asp:RadioButtonList ID="txtsize" runat="server" style="z-index: 1; left: 155px; top: 190px; position: absolute; height: 27px; width: 82px">
-            <asp:ListItem>Small</asp:ListItem>
-            <asp:ListItem>Medium</asp:ListItem>
-            <asp:ListItem>Large</asp:ListItem>
+            <asp:ListItem>small</asp:ListItem>
+            <asp:ListItem>medium</asp:ListItem>
+            <asp:ListItem>large</asp:ListItem>
         </asp:RadioButtonList>
         <asp:Button ID="btnReurnToPage" runat="server" OnClick="btnReurnToPage_Click" style="z-index: 1; left: 352px; top: 619px; position: absolute" Text="Return To Main Menu" />
     </form>

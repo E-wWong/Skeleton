@@ -8,13 +8,12 @@ namespace Testing3
     public class tstInventoryManagement
     {
 
-        string itemID = "10";
+
         string ItemName = "pokemon";
         string ItemPrice = "20.0000";
         string Quantity = "20";
-        string Size = "Medium";
+        string Size = "medium";
         string LastStockDelivery = DateTime.Now.ToShortDateString();
-        string Availability = "1";
 
         [TestMethod]
         public void TestMethod1()
@@ -82,7 +81,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsInventoryManagement AnInventory = new clsInventoryManagement();
             //create some test data to assing to the property
-            String testData = "Medium";
+            String testData = "medium";
             //assign the data to the property
             AnInventory.size = testData;
             //test to see that the 2 values are the same
@@ -116,6 +115,21 @@ namespace Testing3
         }
 
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of a class we want to create
+            clsInventoryManagement AnInventory = new clsInventoryManagement();
+            //create a boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 itemID = 12;
+            //invoke the method
+            Found = AnInventory.Find(itemID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
 
         [TestMethod]
 
@@ -128,11 +142,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 10;
+            Int32 itemID = 12;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.itemID != 10)
+            if (AnInventory.itemID != 12)
             {
                 OK = false;
             }
@@ -151,7 +165,7 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 10;
+            Int32 itemID = 12;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
@@ -174,7 +188,7 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 10;
+            Int32 itemID = 12;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
@@ -197,7 +211,7 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 10;
+            Int32 itemID = 12;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
@@ -220,11 +234,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 10;
+            Int32 itemID = 12;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.size != "Medium" )
+            if (AnInventory.size != "medium" )
             {
                 OK = false;
             }
@@ -243,11 +257,11 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 10;
+            Int32 itemID = 12;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID
-            if (AnInventory.lastStockDelivery != Convert.ToDateTime("10/03/2024")) 
+            if (AnInventory.lastStockDelivery != Convert.ToDateTime("28/05/2024")) 
             {
                 OK = false;
             }
@@ -266,7 +280,7 @@ namespace Testing3
             // create a Boolean variable to record is OK (assume it is)
             Boolean OK = true;
             //create some tests data to use with the method 
-            Int32 itemID = 10;
+            Int32 itemID = 12;
             //invoke the method 
             Found = AnInventory.Find(itemID);
             // check the item ID

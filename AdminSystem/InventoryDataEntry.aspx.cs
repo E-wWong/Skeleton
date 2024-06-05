@@ -39,7 +39,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtitemName.Text = InvenotoryBook.ThisInventory.itemName.ToString();
         txtitemPrice.Text = InvenotoryBook.ThisInventory.itemPrice.ToString();
         txtquantity.Text = InvenotoryBook.ThisInventory.quantity.ToString();
-        txtsize.Text = InvenotoryBook.ThisInventory.size.ToString();
+       // txtsize.Text = InvenotoryBook.ThisInventory.size.ToString();
+       if (InvenotoryBook.ThisInventory.size == "small")
+        {
+            txtsize.SelectedIndex = -1;
+            txtsize.Items[0].Selected = true;
+        }
+        else if (InvenotoryBook.ThisInventory.size == "medium")
+        {
+            txtsize.SelectedIndex = -1;
+            txtsize.Items[1].Selected = true;
+        }
+        else if (InvenotoryBook.ThisInventory.size == "large")
+        {
+            txtsize.SelectedIndex = -1;
+            txtsize.Items[2].Selected = true;
+        }
+       else
+        {
+            txtsize.SelectedIndex = -1;
+        }
+
         clndrStockDelivery.SelectedDate = InvenotoryBook.ThisInventory.lastStockDelivery;
         ChkActive.Checked = InvenotoryBook.ThisInventory.availability;
     }
@@ -62,7 +82,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture size
         string size = txtsize.Text;
         //capture lastStockDelivery
-        string lastStockDelivery = clndrStockDelivery.SelectWeekText;
+        string lastStockDelivery = clndrStockDelivery.SelectedDate.ToString();
         //variable to store any error messages
         string Error = "";
         //validate data 
@@ -76,7 +96,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture itemPrice
         AnInventory.itemPrice = Convert.ToDouble(txtitemPrice.Text);
         // capture quantity
-        AnInventory.quantity = Convert.ToInt32(txtitemID.Text);
+        AnInventory.quantity = Convert.ToInt32(txtquantity.Text);
         // capture size
         AnInventory.size = txtsize.Text;
         //capture lastStockDelivery
