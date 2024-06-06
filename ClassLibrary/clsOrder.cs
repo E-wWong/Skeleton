@@ -158,7 +158,7 @@ namespace ClassLibrary
             String Error = "";
             if (totalItems.Length < 1)
             {
-                Error = Error + "Must select quantity to continue! ";
+                Error = Error + "Please enter Total Items";
             }
             if (totalItems.Length > 5)
             {
@@ -168,17 +168,17 @@ namespace ClassLibrary
 
             if (totalPrice.Length <= 1)
             {
-                Error = Error + "This area may not be blank : ";
+                Error = Error + "Please enter a Total Price ";
             }
             if (totalPrice.Length > 20)
             {
                 //record the error
-                Error = Error + "Total Items may not be more than 20 characters";
+                Error = Error + "Total Price may not be more than 20 characters";
             }
 
             if (address.Length < 20)
             {
-                Error = Error + "This area may not be blank : ";
+                Error = Error + "Please enter an Address";
             }
             if (address.Length >= 500)
             {
@@ -188,7 +188,7 @@ namespace ClassLibrary
 
             if (itemCodes.Length != 11)
             {
-                Error = Error + "Item Code should be 11 characters";
+                Error = Error + "Item Codes should be 11 characters in order to continue";
             }
 
 
