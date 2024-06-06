@@ -30,7 +30,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
         </p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 30px; top: 427px; position: absolute" Text="[lblError]"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 28px; top: 447px; position: absolute"></asp:Label>
     &nbsp;<br />
 &nbsp;<asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply Filter" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -221,7 +221,7 @@ namespace ClassLibrary
 
             if (DateTemp > DateMax)
             {
-                Error = Error + "Staff cannot be born today or in the future : ";
+                Error = Error + "Staff cannot be younger than 18 years old : ";
             }
         
             //--------------------------------------------------------------------------------------------||
